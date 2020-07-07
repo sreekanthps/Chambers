@@ -10,12 +10,11 @@
 		04FC00C02C68BBDA38B73C30 /* Pods_ChambersTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 358B3D9CFA167F8005E52FF1 /* Pods_ChambersTests.framework */; };
 		6392D9D699AB220BD9547E8C /* Pods_Chambers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD1B1E32EF962C17CF4E3658 /* Pods_Chambers.framework */; };
 		D127B51A24B4896300CBF7B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D127B51924B4896300CBF7B4 /* AppDelegate.swift */; };
-		D127B51C24B4896300CBF7B4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D127B51B24B4896300CBF7B4 /* SceneDelegate.swift */; };
 		D127B51E24B4896300CBF7B4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D127B51D24B4896300CBF7B4 /* ViewController.swift */; };
-		D127B52124B4896300CBF7B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D127B51F24B4896300CBF7B4 /* Main.storyboard */; };
 		D127B52324B4896700CBF7B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D127B52224B4896700CBF7B4 /* Assets.xcassets */; };
 		D127B52624B4896700CBF7B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D127B52424B4896700CBF7B4 /* LaunchScreen.storyboard */; };
 		D127B53124B4896700CBF7B4 /* ChambersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D127B53024B4896700CBF7B4 /* ChambersTests.swift */; };
+		D196613924B4CFF9004A336C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D127B51F24B4896300CBF7B4 /* Main.storyboard */; };
 		D1A1FDC824B49157007337B7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A1FDC724B49157007337B7 /* LoginViewController.swift */; };
 		D1A1FDCB24B491A8007337B7 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A1FDCA24B491A8007337B7 /* LoginView.swift */; };
 /* End PBXBuildFile section */
@@ -39,7 +38,6 @@
 		BD1B1E32EF962C17CF4E3658 /* Pods_Chambers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chambers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D127B51624B4896300CBF7B4 /* Chambers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chambers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D127B51924B4896300CBF7B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D127B51B24B4896300CBF7B4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D127B51D24B4896300CBF7B4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D127B52024B4896300CBF7B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D127B52224B4896700CBF7B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -109,7 +107,6 @@
 				D1A1FDC924B49196007337B7 /* View */,
 				D1A1FDC624B4913C007337B7 /* Controller */,
 				D127B51924B4896300CBF7B4 /* AppDelegate.swift */,
-				D127B51B24B4896300CBF7B4 /* SceneDelegate.swift */,
 				D127B51D24B4896300CBF7B4 /* ViewController.swift */,
 				D127B51F24B4896300CBF7B4 /* Main.storyboard */,
 				D127B52224B4896700CBF7B4 /* Assets.xcassets */,
@@ -237,9 +234,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D196613924B4CFF9004A336C /* Main.storyboard in Resources */,
 				D127B52624B4896700CBF7B4 /* LaunchScreen.storyboard in Resources */,
 				D127B52324B4896700CBF7B4 /* Assets.xcassets in Resources */,
-				D127B52124B4896300CBF7B4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,7 +322,6 @@
 				D127B51E24B4896300CBF7B4 /* ViewController.swift in Sources */,
 				D127B51A24B4896300CBF7B4 /* AppDelegate.swift in Sources */,
 				D1A1FDCB24B491A8007337B7 /* LoginView.swift in Sources */,
-				D127B51C24B4896300CBF7B4 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

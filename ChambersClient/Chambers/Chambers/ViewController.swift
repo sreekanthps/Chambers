@@ -14,6 +14,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .red
         let loginButton = FBLoginButton()
         loginButton.delegate = self
         loginButton.permissions = ["public_profile", "email"]
@@ -28,7 +29,7 @@ class ViewController: UIViewController {
 extension ViewController: LoginButtonDelegate {
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
        
-        print("Login completed....")
+        print("Login completed....\(result?.token)")
         
     }
     
