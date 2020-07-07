@@ -9,6 +9,7 @@ target 'Chambers' do
   pod 'FBSDKLoginKit'
   pod 'FlexLayout'
   pod 'PinLayout'
+  pod 'GoogleSignIn'
 
   target 'ChambersTests' do
     inherit! :search_paths

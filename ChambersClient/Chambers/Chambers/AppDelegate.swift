@@ -8,7 +8,7 @@
 
 import UIKit
 import FBSDKCoreKit
-import PinLayout
+import GoogleSignIn
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,12 +19,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         ApplicationDelegate.shared.application( application, didFinishLaunchingWithOptions: launchOptions)
+        GIDSignIn.sharedInstance().clientID = "828971646330-eno5kior4au558sdh0ssecev4rja905e.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance().delegate = self
         setupRootViewController(launchOptions: launchOptions)
         return true
     }
-
     
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+    @available(iOS 9.0, *)
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
         ApplicationDelegate.shared.application(
             app,
             open: url,
@@ -32,22 +34,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             annotation: options[UIApplication.OpenURLOptionsKey.annotation]
         )
 
+      return GIDSignIn.sharedInstance().handle(url)
     }
+    
     // Method to invoke Assign First view controller dynamically
-    
-    func setUpMainViewController(launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
-            let appDelegate = UIApplication.shared.delegate
-            let rootVC = LoginViewController()
-            if let window = appDelegate!.window {
-                let navigationController = UINavigationController(rootViewController: rootVC)
-                rootVC.navigationController?.isNavigationBarHidden = true
-                navigationController.isNavigationBarHidden = true
-                //The line which not related to DSAA-30601 is commented, tested with Adhoc build from same test case, it works as expected
-                window?.rootViewController = navigationController
-                window?.makeKeyAndVisible()
-            }
-        }
-    
     func setupRootViewController(launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
         window = UIWindow(frame: UIScreen.main.bounds)
         if let window = window {

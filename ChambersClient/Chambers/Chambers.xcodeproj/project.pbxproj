@@ -15,6 +15,8 @@
 		D127B52624B4896700CBF7B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D127B52424B4896700CBF7B4 /* LaunchScreen.storyboard */; };
 		D127B53124B4896700CBF7B4 /* ChambersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D127B53024B4896700CBF7B4 /* ChambersTests.swift */; };
 		D196613924B4CFF9004A336C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D127B51F24B4896300CBF7B4 /* Main.storyboard */; };
+		D196613B24B4DD82004A336C /* AppDelegateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D196613A24B4DD82004A336C /* AppDelegateExtension.swift */; };
+		D196613D24B4E74D004A336C /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D196613C24B4E74D004A336C /* AuthenticationServices.framework */; };
 		D1A1FDC824B49157007337B7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A1FDC724B49157007337B7 /* LoginViewController.swift */; };
 		D1A1FDCB24B491A8007337B7 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A1FDCA24B491A8007337B7 /* LoginView.swift */; };
 /* End PBXBuildFile section */
@@ -46,6 +48,8 @@
 		D127B52C24B4896700CBF7B4 /* ChambersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChambersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D127B53024B4896700CBF7B4 /* ChambersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChambersTests.swift; sourceTree = "<group>"; };
 		D127B53224B4896700CBF7B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D196613A24B4DD82004A336C /* AppDelegateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateExtension.swift; sourceTree = "<group>"; };
+		D196613C24B4E74D004A336C /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		D1A1FDC724B49157007337B7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D1A1FDCA24B491A8007337B7 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -55,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D196613D24B4E74D004A336C /* AuthenticationServices.framework in Frameworks */,
 				6392D9D699AB220BD9547E8C /* Pods_Chambers.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -112,6 +117,7 @@
 				D127B52224B4896700CBF7B4 /* Assets.xcassets */,
 				D127B52424B4896700CBF7B4 /* LaunchScreen.storyboard */,
 				D127B52724B4896700CBF7B4 /* Info.plist */,
+				D196613A24B4DD82004A336C /* AppDelegateExtension.swift */,
 			);
 			path = Chambers;
 			sourceTree = "<group>";
@@ -144,6 +150,7 @@
 		D36AC7E0139B9864A4782D51 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D196613C24B4E74D004A336C /* AuthenticationServices.framework */,
 				BD1B1E32EF962C17CF4E3658 /* Pods_Chambers.framework */,
 				358B3D9CFA167F8005E52FF1 /* Pods_ChambersTests.framework */,
 			);
@@ -162,6 +169,7 @@
 				D127B51324B4896300CBF7B4 /* Frameworks */,
 				D127B51424B4896300CBF7B4 /* Resources */,
 				951BC91158934DDECE0F5130 /* [CP] Embed Pods Frameworks */,
+				110B40F314C31B9D42670087 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -250,6 +258,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		110B40F314C31B9D42670087 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Chambers/Pods-Chambers-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Chambers/Pods-Chambers-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Chambers/Pods-Chambers-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		951BC91158934DDECE0F5130 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -321,6 +346,7 @@
 				D1A1FDC824B49157007337B7 /* LoginViewController.swift in Sources */,
 				D127B51E24B4896300CBF7B4 /* ViewController.swift in Sources */,
 				D127B51A24B4896300CBF7B4 /* AppDelegate.swift in Sources */,
+				D196613B24B4DD82004A336C /* AppDelegateExtension.swift in Sources */,
 				D1A1FDCB24B491A8007337B7 /* LoginView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

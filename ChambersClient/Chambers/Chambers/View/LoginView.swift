@@ -11,6 +11,7 @@ import FlexLayout
 import PinLayout
 import FBSDKCoreKit
 import FBSDKLoginKit
+import GoogleSignIn
 
 class LoginView: UIView {
     fileprivate let root = UIView()
@@ -18,6 +19,10 @@ class LoginView: UIView {
          let loginButton = FBLoginButton()
          //loginButton.delegate = self
          loginButton.permissions = ["public_profile", "email"]
+         return loginButton
+    }()
+    private let googleLogin : GIDSignInButton = {
+         let loginButton = GIDSignInButton()
          return loginButton
     }()
     
@@ -34,6 +39,7 @@ class LoginView: UIView {
         root.backgroundColor = .white
         root.flex.justifyContent(.center).padding(10).alignItems(.center).define { (flex) in
             flex.addItem(fbLogin).height(40).width(60%)
+            flex.addItem(googleLogin).height(40).width(63%).marginTop(20)
         }
         addSubview(root)
     }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 class LoginViewController: UIViewController {
     private var loginView: LoginView {
@@ -19,6 +20,15 @@ class LoginViewController: UIViewController {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    override func viewDidLoad() {
+      super.viewDidLoad()
+      GIDSignIn.sharedInstance()?.presentingViewController = self
+
+      // Automatically sign in the user.
+      //    GIDSignIn.sharedInstance()?.restorePreviousSignIn()
+
+      // ...
     }
     
     override func loadView() {
