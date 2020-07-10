@@ -57,7 +57,6 @@ class LoginView: UIView {
 
 extension LoginView: LoginButtonDelegate {
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
-       
         print("Login completed....\(result?.token)")
         
     }

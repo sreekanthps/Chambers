@@ -19,6 +19,19 @@
 		D196613D24B4E74D004A336C /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D196613C24B4E74D004A336C /* AuthenticationServices.framework */; };
 		D1A1FDC824B49157007337B7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A1FDC724B49157007337B7 /* LoginViewController.swift */; };
 		D1A1FDCB24B491A8007337B7 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A1FDCA24B491A8007337B7 /* LoginView.swift */; };
+		D1AC7A0B24B6E68B003978BA /* DashBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AC7A0A24B6E68B003978BA /* DashBoardViewController.swift */; };
+		D1AC7A0D24B6E6AE003978BA /* DashBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AC7A0C24B6E6AE003978BA /* DashBoardView.swift */; };
+		D1AC7A1024B6E74A003978BA /* NewDocumentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AC7A0F24B6E74A003978BA /* NewDocumentController.swift */; };
+		D1AD9D9D24B87D4700DD292B /* CryptoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AD9D9C24B87D4700DD292B /* CryptoHelper.swift */; };
+		D1AD9D9F24B87F0800DD292B /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1AD9D9E24B87F0800DD292B /* CryptoSwift.framework */; };
+		D1AD9DA724B8A87500DD292B /* SwCrypt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AD9DA624B8A87400DD292B /* SwCrypt.swift */; };
+		D1C448BF24B7417800EDA165 /* NewDocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C448BE24B7417800EDA165 /* NewDocumentView.swift */; };
+		D1C448C224B7484C00EDA165 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C448C124B7484C00EDA165 /* UIColorExtension.swift */; };
+		D1C448C424B7487C00EDA165 /* ColorsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C448C324B7487C00EDA165 /* ColorsHelper.swift */; };
+		D1C448C624B74A5700EDA165 /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C448C524B74A5700EDA165 /* UIFontExtension.swift */; };
+		D1C448C824B75E5000EDA165 /* UtilitiesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C448C724B75E5000EDA165 /* UtilitiesHelper.swift */; };
+		D1C448CA24B7665400EDA165 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1C448C924B7665400EDA165 /* AVFoundation.framework */; };
+		D1C448CC24B768D200EDA165 /* ActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C448CB24B768D200EDA165 /* ActionDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +65,21 @@
 		D196613C24B4E74D004A336C /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		D1A1FDC724B49157007337B7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D1A1FDCA24B491A8007337B7 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		D1AC7A0924B6D64E003978BA /* Chambers.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Chambers.entitlements; sourceTree = "<group>"; };
+		D1AC7A0A24B6E68B003978BA /* DashBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoardViewController.swift; sourceTree = "<group>"; };
+		D1AC7A0C24B6E6AE003978BA /* DashBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoardView.swift; sourceTree = "<group>"; };
+		D1AC7A0F24B6E74A003978BA /* NewDocumentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDocumentController.swift; sourceTree = "<group>"; };
+		D1AD9D9C24B87D4700DD292B /* CryptoHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoHelper.swift; sourceTree = "<group>"; };
+		D1AD9D9E24B87F0800DD292B /* CryptoSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CryptoSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1AD9DA324B896A400DD292B /* Chambers-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Chambers-Bridging-Header.h"; sourceTree = "<group>"; };
+		D1AD9DA624B8A87400DD292B /* SwCrypt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwCrypt.swift; sourceTree = "<group>"; };
+		D1C448BE24B7417800EDA165 /* NewDocumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDocumentView.swift; sourceTree = "<group>"; };
+		D1C448C124B7484C00EDA165 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		D1C448C324B7487C00EDA165 /* ColorsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsHelper.swift; sourceTree = "<group>"; };
+		D1C448C524B74A5700EDA165 /* UIFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
+		D1C448C724B75E5000EDA165 /* UtilitiesHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesHelper.swift; sourceTree = "<group>"; };
+		D1C448C924B7665400EDA165 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		D1C448CB24B768D200EDA165 /* ActionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +89,8 @@
 			files = (
 				D196613D24B4E74D004A336C /* AuthenticationServices.framework in Frameworks */,
 				6392D9D699AB220BD9547E8C /* Pods_Chambers.framework in Frameworks */,
+				D1C448CA24B7665400EDA165 /* AVFoundation.framework in Frameworks */,
+				D1AD9D9F24B87F0800DD292B /* CryptoSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +139,10 @@
 		D127B51824B4896300CBF7B4 /* Chambers */ = {
 			isa = PBXGroup;
 			children = (
+				D1AD9DA224B8967D00DD292B /* Bridge */,
+				D1C448C024B7476000EDA165 /* Utilities */,
+				D1AC7A0E24B6E6BF003978BA /* Components */,
+				D1AC7A0924B6D64E003978BA /* Chambers.entitlements */,
 				D1A1FDC924B49196007337B7 /* View */,
 				D1A1FDC624B4913C007337B7 /* Controller */,
 				D127B51924B4896300CBF7B4 /* AppDelegate.swift */,
@@ -135,6 +169,8 @@
 			isa = PBXGroup;
 			children = (
 				D1A1FDC724B49157007337B7 /* LoginViewController.swift */,
+				D1AC7A0F24B6E74A003978BA /* NewDocumentController.swift */,
+				D1AC7A0A24B6E68B003978BA /* DashBoardViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -143,13 +179,46 @@
 			isa = PBXGroup;
 			children = (
 				D1A1FDCA24B491A8007337B7 /* LoginView.swift */,
+				D1AC7A0C24B6E6AE003978BA /* DashBoardView.swift */,
+				D1C448BE24B7417800EDA165 /* NewDocumentView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		D1AC7A0E24B6E6BF003978BA /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		D1AD9DA224B8967D00DD292B /* Bridge */ = {
+			isa = PBXGroup;
+			children = (
+				D1AD9DA324B896A400DD292B /* Chambers-Bridging-Header.h */,
+			);
+			path = Bridge;
+			sourceTree = "<group>";
+		};
+		D1C448C024B7476000EDA165 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				D1AD9DA624B8A87400DD292B /* SwCrypt.swift */,
+				D1C448C124B7484C00EDA165 /* UIColorExtension.swift */,
+				D1C448C324B7487C00EDA165 /* ColorsHelper.swift */,
+				D1C448C524B74A5700EDA165 /* UIFontExtension.swift */,
+				D1C448C724B75E5000EDA165 /* UtilitiesHelper.swift */,
+				D1C448CB24B768D200EDA165 /* ActionDelegate.swift */,
+				D1AD9D9C24B87D4700DD292B /* CryptoHelper.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		D36AC7E0139B9864A4782D51 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D1AD9D9E24B87F0800DD292B /* CryptoSwift.framework */,
+				D1C448C924B7665400EDA165 /* AVFoundation.framework */,
 				D196613C24B4E74D004A336C /* AuthenticationServices.framework */,
 				BD1B1E32EF962C17CF4E3658 /* Pods_Chambers.framework */,
 				358B3D9CFA167F8005E52FF1 /* Pods_ChambersTests.framework */,
@@ -205,12 +274,16 @@
 		D127B50E24B4896300CBF7B4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					New,
+				);
 				LastSwiftUpdateCheck = 1140;
 				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = Citibank;
 				TargetAttributes = {
 					D127B51524B4896300CBF7B4 = {
 						CreatedOnToolsVersion = 11.4.1;
+						LastSwiftMigration = 1140;
 					};
 					D127B52B24B4896700CBF7B4 = {
 						CreatedOnToolsVersion = 11.4.1;
@@ -344,10 +417,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1A1FDC824B49157007337B7 /* LoginViewController.swift in Sources */,
+				D1C448C824B75E5000EDA165 /* UtilitiesHelper.swift in Sources */,
 				D127B51E24B4896300CBF7B4 /* ViewController.swift in Sources */,
+				D1C448C424B7487C00EDA165 /* ColorsHelper.swift in Sources */,
+				D1AD9DA724B8A87500DD292B /* SwCrypt.swift in Sources */,
 				D127B51A24B4896300CBF7B4 /* AppDelegate.swift in Sources */,
+				D1AC7A1024B6E74A003978BA /* NewDocumentController.swift in Sources */,
+				D1C448BF24B7417800EDA165 /* NewDocumentView.swift in Sources */,
+				D1AC7A0D24B6E6AE003978BA /* DashBoardView.swift in Sources */,
+				D1C448CC24B768D200EDA165 /* ActionDelegate.swift in Sources */,
+				D1AC7A0B24B6E68B003978BA /* DashBoardViewController.swift in Sources */,
+				D1C448C224B7484C00EDA165 /* UIColorExtension.swift in Sources */,
 				D196613B24B4DD82004A336C /* AppDelegateExtension.swift in Sources */,
+				D1C448C624B74A5700EDA165 /* UIFontExtension.swift in Sources */,
 				D1A1FDCB24B491A8007337B7 /* LoginView.swift in Sources */,
+				D1AD9D9D24B87D4700DD292B /* CryptoHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,7 +592,10 @@
 			baseConfigurationReference = 076C279F6B10D5849E6C2500 /* Pods-Chambers.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Chambers/Chambers.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DZ6557Z6W8;
 				INFOPLIST_FILE = Chambers/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -517,6 +604,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.swesree.auth.Chambers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Chambers/Bridge/Chambers-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -527,7 +616,10 @@
 			baseConfigurationReference = 17953ACB03167F0A5B6CEB34 /* Pods-Chambers.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Chambers/Chambers.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DZ6557Z6W8;
 				INFOPLIST_FILE = Chambers/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -536,6 +628,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.swesree.auth.Chambers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Chambers/Bridge/Chambers-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

@@ -1,9 +1,12 @@
 PODS:
+  - AesGcm (1.2.2)
+  - Alamofire (4.9.1)
   - AppAuth (1.4.0):
     - AppAuth/Core (= 1.4.0)
     - AppAuth/ExternalUserAgent (= 1.4.0)
   - AppAuth/Core (1.4.0)
   - AppAuth/ExternalUserAgent (1.4.0)
+  - CryptoSwift (1.3.1)
   - FBSDKCoreKit (7.1.1):
     - FBSDKCoreKit/Basics (= 7.1.1)
     - FBSDKCoreKit/Core (= 7.1.1)
@@ -30,6 +33,9 @@ PODS:
   - PinLayout (1.9.2)
 
 DEPENDENCIES:
+  - AesGcm
+  - Alamofire
+  - CryptoSwift (~> 1.0)
   - FBSDKLoginKit
   - FlexLayout
   - GoogleSignIn
@@ -37,7 +43,10 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - AesGcm
+    - Alamofire
     - AppAuth
+    - CryptoSwift
     - FBSDKCoreKit
     - FBSDKLoginKit
     - FlexLayout
@@ -47,7 +56,10 @@ SPEC REPOS:
     - PinLayout
 
 SPEC CHECKSUMS:
+  AesGcm: 14d70d3a321e92d3a773a9191c28b5ac534fb278
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
+  CryptoSwift: f12f037f6d0fcd6d48c96db0071b653de64e6c4d
   FBSDKCoreKit: b46507dc8b8cefed31d644e74d7cc30e2a715ef8
   FBSDKLoginKit: 1a61d79e2b25e2fc0d03dccab1e34b38bbdf2546
   FlexLayout: 025dd153bd5618dcc9f93ef914106d7dc2a86fdc
@@ -56,6 +68,6 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
   PinLayout: 0d96022e46e8b80468d819f182a393b97ca038da
 
-PODFILE CHECKSUM: a5c0e47f1de9f54a4d0be06f96b2dc1f71e036c7
+PODFILE CHECKSUM: c77f662e2fc92f2405c80e189fd336d3b48d0132
 
 COCOAPODS: 1.9.3
