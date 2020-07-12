@@ -1,11 +1,47 @@
 PODS:
   - AesGcm (1.2.2)
   - Alamofire (4.9.1)
+  - Amplify (1.0.4):
+    - Amplify/Default (= 1.0.4)
+  - Amplify/Default (1.0.4)
+  - Amplify/Tools (1.0.4)
+  - AmplifyPlugins/AWSAPIPlugin (1.0.4):
+    - AppSyncRealTimeClient (~> 1.1.0)
+    - AWSAuthCore (~> 2.14.0)
+    - AWSCore (~> 2.14.0)
+    - AWSPluginsCore (= 1.0.4)
+    - ReachabilitySwift (~> 5.0.0)
+  - AmplifyPlugins/AWSCognitoAuthPlugin (1.0.4):
+    - AWSAuthCore (~> 2.14.0)
+    - AWSCore (~> 2.14.0)
+    - AWSMobileClient (~> 2.14.0)
+    - AWSPluginsCore (= 1.0.4)
+  - AmplifyPlugins/AWSDataStorePlugin (1.0.4):
+    - AWSAuthCore (~> 2.14.0)
+    - AWSCore (~> 2.14.0)
+    - AWSPluginsCore (= 1.0.4)
+    - SQLite.swift (~> 0.12.0)
   - AppAuth (1.4.0):
     - AppAuth/Core (= 1.4.0)
     - AppAuth/ExternalUserAgent (= 1.4.0)
   - AppAuth/Core (1.4.0)
   - AppAuth/ExternalUserAgent (1.4.0)
+  - AppSyncRealTimeClient (1.1.6):
+    - Starscream (= 3.0.6)
+  - AWSAuthCore (2.14.2):
+    - AWSCore (= 2.14.2)
+  - AWSCognitoIdentityProvider (2.14.2):
+    - AWSCognitoIdentityProviderASF (= 1.0.1)
+    - AWSCore (= 2.14.2)
+  - AWSCognitoIdentityProviderASF (1.0.1)
+  - AWSCore (2.14.2)
+  - AWSMobileClient (2.14.2):
+    - AWSAuthCore (= 2.14.2)
+    - AWSCognitoIdentityProvider (= 2.14.2)
+  - AWSPluginsCore (1.0.4):
+    - Amplify (= 1.0.4)
+    - AWSCore (~> 2.14.0)
+    - AWSMobileClient (~> 2.14.0)
   - CryptoSwift (1.3.1)
   - FBSDKCoreKit (7.1.1):
     - FBSDKCoreKit/Basics (= 7.1.1)
@@ -31,10 +67,20 @@ PODS:
   - GTMSessionFetcher/Full (1.4.0):
     - GTMSessionFetcher/Core (= 1.4.0)
   - PinLayout (1.9.2)
+  - ReachabilitySwift (5.0.0)
+  - SQLite.swift (0.12.2):
+    - SQLite.swift/standard (= 0.12.2)
+  - SQLite.swift/standard (0.12.2)
+  - Starscream (3.0.6)
 
 DEPENDENCIES:
   - AesGcm
   - Alamofire
+  - Amplify
+  - Amplify/Tools
+  - AmplifyPlugins/AWSAPIPlugin
+  - AmplifyPlugins/AWSCognitoAuthPlugin
+  - AmplifyPlugins/AWSDataStorePlugin
   - CryptoSwift (~> 1.0)
   - FBSDKLoginKit
   - FlexLayout
@@ -45,7 +91,16 @@ SPEC REPOS:
   trunk:
     - AesGcm
     - Alamofire
+    - Amplify
+    - AmplifyPlugins
     - AppAuth
+    - AppSyncRealTimeClient
+    - AWSAuthCore
+    - AWSCognitoIdentityProvider
+    - AWSCognitoIdentityProviderASF
+    - AWSCore
+    - AWSMobileClient
+    - AWSPluginsCore
     - CryptoSwift
     - FBSDKCoreKit
     - FBSDKLoginKit
@@ -54,11 +109,23 @@ SPEC REPOS:
     - GTMAppAuth
     - GTMSessionFetcher
     - PinLayout
+    - ReachabilitySwift
+    - SQLite.swift
+    - Starscream
 
 SPEC CHECKSUMS:
   AesGcm: 14d70d3a321e92d3a773a9191c28b5ac534fb278
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  Amplify: 7626e435f3e78ac3508252557e375f994d5d5154
+  AmplifyPlugins: aba4f9e4432ebc089aaea45722d2c5711d3e58f4
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
+  AppSyncRealTimeClient: 4a2ccdc1722750a1f4d76e216f9bfb1cf12f10de
+  AWSAuthCore: 7ab6f5ab60ba8bb91a4868581946a993cbbae76d
+  AWSCognitoIdentityProvider: 609856c741ef86037055223b3a46f4eeb49319d0
+  AWSCognitoIdentityProviderASF: f94f1a502e72ef3d0a1de93e10bf7a79c8698118
+  AWSCore: 80da498ab0979e77dbdc7690a61ceaaccfb0499a
+  AWSMobileClient: b80f21439aa95df2375e7acdde76d2f60c12f4b7
+  AWSPluginsCore: 646f8c2d831a52f2293da0dfd59a31eee61f6ad5
   CryptoSwift: f12f037f6d0fcd6d48c96db0071b653de64e6c4d
   FBSDKCoreKit: b46507dc8b8cefed31d644e74d7cc30e2a715ef8
   FBSDKLoginKit: 1a61d79e2b25e2fc0d03dccab1e34b38bbdf2546
@@ -67,7 +134,10 @@ SPEC CHECKSUMS:
   GTMAppAuth: 4deac854479704f348309e7b66189e604cf5e01e
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
   PinLayout: 0d96022e46e8b80468d819f182a393b97ca038da
+  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
+  SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
+  Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
 
-PODFILE CHECKSUM: c77f662e2fc92f2405c80e189fd336d3b48d0132
+PODFILE CHECKSUM: 77a7a568717f19a357586b872d901a9198250d28
 
 COCOAPODS: 1.9.3

@@ -9,6 +9,8 @@
 import UIKit
 import FBSDKCoreKit
 import GoogleSignIn
+import Amplify
+import AmplifyPlugins
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,6 +24,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GIDSignIn.sharedInstance().clientID = "828971646330-eno5kior4au558sdh0ssecev4rja905e.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().delegate = self
         setupRootViewController(launchOptions: launchOptions)
+        do {
+            
+            Amplify.Logging.logLevel = .verbose
+            //try Amplify.add(plugin: AWSCognitoAuthPlugin())
+            try Amplify.configure()
+            
+        } catch {
+            print("An error occurred setting up Amplify: \(error)")
+        }
         return true
     }
     
@@ -41,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func setupRootViewController(launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
         window = UIWindow(frame: UIScreen.main.bounds)
         if let window = window {
-            let mainVC = NewDocumentController()
+            let mainVC =  LoginViewController()//LoginViewController()//NewDocumentController()
             navigationController = UINavigationController(rootViewController: mainVC)
             window.rootViewController = navigationController
             window.makeKeyAndVisible()

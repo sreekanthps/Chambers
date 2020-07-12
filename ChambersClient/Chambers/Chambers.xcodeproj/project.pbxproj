@@ -9,11 +9,19 @@
 /* Begin PBXBuildFile section */
 		04FC00C02C68BBDA38B73C30 /* Pods_ChambersTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 358B3D9CFA167F8005E52FF1 /* Pods_ChambersTests.framework */; };
 		6392D9D699AB220BD9547E8C /* Pods_Chambers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD1B1E32EF962C17CF4E3658 /* Pods_Chambers.framework */; };
+		D115641624BABABB0061F964 /* UINavigationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D115641524BABABB0061F964 /* UINavigationHelper.swift */; };
+		D115641824BABE7B0061F964 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D115641724BABE7B0061F964 /* BaseViewController.swift */; };
+		D115641B24BAC1A80061F964 /* NavigationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D115641A24BAC1A80061F964 /* NavigationModel.swift */; };
+		D115641D24BAD5C60061F964 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D115641C24BAD5C50061F964 /* ImageHelper.swift */; };
+		D115641F24BB20B80061F964 /* FileManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D115641E24BB20B80061F964 /* FileManagerHelper.swift */; };
+		D115642124BB25650061F964 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D115642024BB25640061F964 /* LoginModel.swift */; };
 		D127B51A24B4896300CBF7B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D127B51924B4896300CBF7B4 /* AppDelegate.swift */; };
 		D127B51E24B4896300CBF7B4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D127B51D24B4896300CBF7B4 /* ViewController.swift */; };
 		D127B52324B4896700CBF7B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D127B52224B4896700CBF7B4 /* Assets.xcassets */; };
 		D127B52624B4896700CBF7B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D127B52424B4896700CBF7B4 /* LaunchScreen.storyboard */; };
 		D127B53124B4896700CBF7B4 /* ChambersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D127B53024B4896700CBF7B4 /* ChambersTests.swift */; };
+		D175579524B9EDB400B4ACEA /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = D175579324B9EDB400B4ACEA /* amplifyconfiguration.json */; };
+		D175579624B9EDB400B4ACEA /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = D175579424B9EDB400B4ACEA /* awsconfiguration.json */; };
 		D196613924B4CFF9004A336C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D127B51F24B4896300CBF7B4 /* Main.storyboard */; };
 		D196613B24B4DD82004A336C /* AppDelegateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D196613A24B4DD82004A336C /* AppDelegateExtension.swift */; };
 		D196613D24B4E74D004A336C /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D196613C24B4E74D004A336C /* AuthenticationServices.framework */; };
@@ -51,6 +59,12 @@
 		5B159BFBC0E7F96692B88434 /* Pods-ChambersTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChambersTests.release.xcconfig"; path = "Target Support Files/Pods-ChambersTests/Pods-ChambersTests.release.xcconfig"; sourceTree = "<group>"; };
 		94C49177ECBDB4793CDB81A9 /* Pods-ChambersTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChambersTests.debug.xcconfig"; path = "Target Support Files/Pods-ChambersTests/Pods-ChambersTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BD1B1E32EF962C17CF4E3658 /* Pods_Chambers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chambers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D115641524BABABB0061F964 /* UINavigationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationHelper.swift; sourceTree = "<group>"; };
+		D115641724BABE7B0061F964 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		D115641A24BAC1A80061F964 /* NavigationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationModel.swift; sourceTree = "<group>"; };
+		D115641C24BAD5C50061F964 /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
+		D115641E24BB20B80061F964 /* FileManagerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerHelper.swift; sourceTree = "<group>"; };
+		D115642024BB25640061F964 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		D127B51624B4896300CBF7B4 /* Chambers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chambers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D127B51924B4896300CBF7B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D127B51D24B4896300CBF7B4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +75,8 @@
 		D127B52C24B4896700CBF7B4 /* ChambersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChambersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D127B53024B4896700CBF7B4 /* ChambersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChambersTests.swift; sourceTree = "<group>"; };
 		D127B53224B4896700CBF7B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D175579324B9EDB400B4ACEA /* amplifyconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
+		D175579424B9EDB400B4ACEA /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
 		D196613A24B4DD82004A336C /* AppDelegateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateExtension.swift; sourceTree = "<group>"; };
 		D196613C24B4E74D004A336C /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		D1A1FDC724B49157007337B7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +132,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		D115641924BAC1910061F964 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D115641A24BAC1A80061F964 /* NavigationModel.swift */,
+				D115642024BB25640061F964 /* LoginModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		D127B50D24B4896300CBF7B4 = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +164,8 @@
 		D127B51824B4896300CBF7B4 /* Chambers */ = {
 			isa = PBXGroup;
 			children = (
+				D115641924BAC1910061F964 /* Model */,
+				D175579224B9ED9400B4ACEA /* Cloud */,
 				D1AD9DA224B8967D00DD292B /* Bridge */,
 				D1C448C024B7476000EDA165 /* Utilities */,
 				D1AC7A0E24B6E6BF003978BA /* Components */,
@@ -165,12 +192,22 @@
 			path = ChambersTests;
 			sourceTree = "<group>";
 		};
+		D175579224B9ED9400B4ACEA /* Cloud */ = {
+			isa = PBXGroup;
+			children = (
+				D175579324B9EDB400B4ACEA /* amplifyconfiguration.json */,
+				D175579424B9EDB400B4ACEA /* awsconfiguration.json */,
+			);
+			path = Cloud;
+			sourceTree = "<group>";
+		};
 		D1A1FDC624B4913C007337B7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				D1A1FDC724B49157007337B7 /* LoginViewController.swift */,
 				D1AC7A0F24B6E74A003978BA /* NewDocumentController.swift */,
 				D1AC7A0A24B6E68B003978BA /* DashBoardViewController.swift */,
+				D115641724BABE7B0061F964 /* BaseViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -210,6 +247,9 @@
 				D1C448C724B75E5000EDA165 /* UtilitiesHelper.swift */,
 				D1C448CB24B768D200EDA165 /* ActionDelegate.swift */,
 				D1AD9D9C24B87D4700DD292B /* CryptoHelper.swift */,
+				D115641524BABABB0061F964 /* UINavigationHelper.swift */,
+				D115641C24BAD5C50061F964 /* ImageHelper.swift */,
+				D115641E24BB20B80061F964 /* FileManagerHelper.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -315,9 +355,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D175579624B9EDB400B4ACEA /* awsconfiguration.json in Resources */,
 				D196613924B4CFF9004A336C /* Main.storyboard in Resources */,
 				D127B52624B4896700CBF7B4 /* LaunchScreen.storyboard in Resources */,
 				D127B52324B4896700CBF7B4 /* Assets.xcassets in Resources */,
+				D175579524B9EDB400B4ACEA /* amplifyconfiguration.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,16 +461,22 @@
 				D1A1FDC824B49157007337B7 /* LoginViewController.swift in Sources */,
 				D1C448C824B75E5000EDA165 /* UtilitiesHelper.swift in Sources */,
 				D127B51E24B4896300CBF7B4 /* ViewController.swift in Sources */,
+				D115642124BB25650061F964 /* LoginModel.swift in Sources */,
 				D1C448C424B7487C00EDA165 /* ColorsHelper.swift in Sources */,
 				D1AD9DA724B8A87500DD292B /* SwCrypt.swift in Sources */,
+				D115641824BABE7B0061F964 /* BaseViewController.swift in Sources */,
 				D127B51A24B4896300CBF7B4 /* AppDelegate.swift in Sources */,
 				D1AC7A1024B6E74A003978BA /* NewDocumentController.swift in Sources */,
 				D1C448BF24B7417800EDA165 /* NewDocumentView.swift in Sources */,
+				D115641B24BAC1A80061F964 /* NavigationModel.swift in Sources */,
 				D1AC7A0D24B6E6AE003978BA /* DashBoardView.swift in Sources */,
+				D115641D24BAD5C60061F964 /* ImageHelper.swift in Sources */,
 				D1C448CC24B768D200EDA165 /* ActionDelegate.swift in Sources */,
+				D115641624BABABB0061F964 /* UINavigationHelper.swift in Sources */,
 				D1AC7A0B24B6E68B003978BA /* DashBoardViewController.swift in Sources */,
 				D1C448C224B7484C00EDA165 /* UIColorExtension.swift in Sources */,
 				D196613B24B4DD82004A336C /* AppDelegateExtension.swift in Sources */,
+				D115641F24BB20B80061F964 /* FileManagerHelper.swift in Sources */,
 				D1C448C624B74A5700EDA165 /* UIFontExtension.swift in Sources */,
 				D1A1FDCB24B491A8007337B7 /* LoginView.swift in Sources */,
 				D1AD9D9D24B87D4700DD292B /* CryptoHelper.swift in Sources */,
