@@ -38,6 +38,8 @@ PODS:
   - AWSMobileClient (2.14.2):
     - AWSAuthCore (= 2.14.2)
     - AWSCognitoIdentityProvider (= 2.14.2)
+  - AWSPinpoint (2.14.2):
+    - AWSCore (= 2.14.2)
   - AWSPluginsCore (1.0.4):
     - Amplify (= 1.0.4)
     - AWSCore (~> 2.14.0)
@@ -81,6 +83,8 @@ DEPENDENCIES:
   - AmplifyPlugins/AWSAPIPlugin
   - AmplifyPlugins/AWSCognitoAuthPlugin
   - AmplifyPlugins/AWSDataStorePlugin
+  - AWSMobileClient
+  - AWSPinpoint
   - CryptoSwift (~> 1.0)
   - FBSDKLoginKit
   - FlexLayout
@@ -100,6 +104,7 @@ SPEC REPOS:
     - AWSCognitoIdentityProviderASF
     - AWSCore
     - AWSMobileClient
+    - AWSPinpoint
     - AWSPluginsCore
     - CryptoSwift
     - FBSDKCoreKit
@@ -125,6 +130,7 @@ SPEC CHECKSUMS:
   AWSCognitoIdentityProviderASF: f94f1a502e72ef3d0a1de93e10bf7a79c8698118
   AWSCore: 80da498ab0979e77dbdc7690a61ceaaccfb0499a
   AWSMobileClient: b80f21439aa95df2375e7acdde76d2f60c12f4b7
+  AWSPinpoint: ce47d17a9d67885d83276cf0ee92edfe809c007f
   AWSPluginsCore: 646f8c2d831a52f2293da0dfd59a31eee61f6ad5
   CryptoSwift: f12f037f6d0fcd6d48c96db0071b653de64e6c4d
   FBSDKCoreKit: b46507dc8b8cefed31d644e74d7cc30e2a715ef8
@@ -138,6 +144,6 @@ SPEC CHECKSUMS:
   SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
   Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
 
-PODFILE CHECKSUM: 77a7a568717f19a357586b872d901a9198250d28
+PODFILE CHECKSUM: 28ea4ca6841af882fc8aded3b19e32ba5e8608a9
 
 COCOAPODS: 1.9.3

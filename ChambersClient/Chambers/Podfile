@@ -18,6 +18,9 @@ target 'Chambers' do
   pod 'AmplifyPlugins/AWSAPIPlugin'
   pod 'AmplifyPlugins/AWSDataStorePlugin'
   pod 'AmplifyPlugins/AWSCognitoAuthPlugin'
+  pod 'AWSMobileClient'
+  pod 'AWSPinpoint'
+ 
 
   target 'ChambersTests' do
     inherit! :search_paths

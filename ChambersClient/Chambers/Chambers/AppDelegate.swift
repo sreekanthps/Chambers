@@ -11,6 +11,7 @@ import FBSDKCoreKit
 import GoogleSignIn
 import Amplify
 import AmplifyPlugins
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ApplicationDelegate.shared.application( application, didFinishLaunchingWithOptions: launchOptions)
         GIDSignIn.sharedInstance().clientID = "828971646330-eno5kior4au558sdh0ssecev4rja905e.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().delegate = self
+        //addRealmObjects()
         setupRootViewController(launchOptions: launchOptions)
         do {
             
@@ -56,6 +58,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             navigationController = UINavigationController(rootViewController: mainVC)
             window.rootViewController = navigationController
             window.makeKeyAndVisible()
+        }
+    }
+    private func addRealmObjects() {
+        let realm = try! Realm()
+        try! realm.write {
+            let doc1 = DocumentStore(id: 1, documentName: "Swetha document", timestamp: Date().unixTimestamp, fileType: "PDF", datecreation: Date())
+            let doc2 = DocumentStore(id: 2, documentName: "Sreekanth document", timestamp: Date().unixTimestamp, fileType: "JPEG", datecreation: Date())
+            let doc3 = DocumentStore(id: 3, documentName: "Indira Document", timestamp: Date().unixTimestamp, fileType: "DOCX", datecreation: Date())
+            
+            realm.add(doc1)
+            realm.add(doc2)
+            realm.add(doc3)
+            try! realm.commitWrite()
         }
     }
 

@@ -33,6 +33,13 @@
 		D1AD9D9D24B87D4700DD292B /* CryptoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AD9D9C24B87D4700DD292B /* CryptoHelper.swift */; };
 		D1AD9D9F24B87F0800DD292B /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1AD9D9E24B87F0800DD292B /* CryptoSwift.framework */; };
 		D1AD9DA724B8A87500DD292B /* SwCrypt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AD9DA624B8A87400DD292B /* SwCrypt.swift */; };
+		D1BE9C2D24BC339A00BA568C /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1BE9C2B24BC339900BA568C /* RealmSwift.framework */; };
+		D1BE9C2E24BC339A00BA568C /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D1BE9C2B24BC339900BA568C /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D1BE9C2F24BC339A00BA568C /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1BE9C2C24BC339900BA568C /* Realm.framework */; };
+		D1BE9C3024BC339A00BA568C /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D1BE9C2C24BC339900BA568C /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D1BE9C3624BC34F200BA568C /* DocumentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BE9C3524BC34F100BA568C /* DocumentStore.swift */; };
+		D1BE9C3B24BC4C0400BA568C /* DashboardRecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BE9C3A24BC4C0400BA568C /* DashboardRecordCell.swift */; };
+		D1BE9C3D24BC514200BA568C /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BE9C3C24BC514200BA568C /* DateHelper.swift */; };
 		D1C448BF24B7417800EDA165 /* NewDocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C448BE24B7417800EDA165 /* NewDocumentView.swift */; };
 		D1C448C224B7484C00EDA165 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C448C124B7484C00EDA165 /* UIColorExtension.swift */; };
 		D1C448C424B7487C00EDA165 /* ColorsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C448C324B7487C00EDA165 /* ColorsHelper.swift */; };
@@ -51,6 +58,21 @@
 			remoteInfo = Chambers;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D1BE9C3124BC339A00BA568C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D1BE9C3024BC339A00BA568C /* Realm.framework in Embed Frameworks */,
+				D1BE9C2E24BC339A00BA568C /* RealmSwift.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		076C279F6B10D5849E6C2500 /* Pods-Chambers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chambers.debug.xcconfig"; path = "Target Support Files/Pods-Chambers/Pods-Chambers.debug.xcconfig"; sourceTree = "<group>"; };
@@ -89,6 +111,11 @@
 		D1AD9D9E24B87F0800DD292B /* CryptoSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CryptoSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1AD9DA324B896A400DD292B /* Chambers-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Chambers-Bridging-Header.h"; sourceTree = "<group>"; };
 		D1AD9DA624B8A87400DD292B /* SwCrypt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwCrypt.swift; sourceTree = "<group>"; };
+		D1BE9C2B24BC339900BA568C /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Chambers/Realm/RealmSwift.framework; sourceTree = "<group>"; };
+		D1BE9C2C24BC339900BA568C /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Chambers/Realm/Realm.framework; sourceTree = "<group>"; };
+		D1BE9C3524BC34F100BA568C /* DocumentStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentStore.swift; sourceTree = "<group>"; };
+		D1BE9C3A24BC4C0400BA568C /* DashboardRecordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardRecordCell.swift; sourceTree = "<group>"; };
+		D1BE9C3C24BC514200BA568C /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		D1C448BE24B7417800EDA165 /* NewDocumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDocumentView.swift; sourceTree = "<group>"; };
 		D1C448C124B7484C00EDA165 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		D1C448C324B7487C00EDA165 /* ColorsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsHelper.swift; sourceTree = "<group>"; };
@@ -103,7 +130,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1BE9C2F24BC339A00BA568C /* Realm.framework in Frameworks */,
 				D196613D24B4E74D004A336C /* AuthenticationServices.framework in Frameworks */,
+				D1BE9C2D24BC339A00BA568C /* RealmSwift.framework in Frameworks */,
 				6392D9D699AB220BD9547E8C /* Pods_Chambers.framework in Frameworks */,
 				D1C448CA24B7665400EDA165 /* AVFoundation.framework in Frameworks */,
 				D1AD9D9F24B87F0800DD292B /* CryptoSwift.framework in Frameworks */,
@@ -135,6 +164,7 @@
 		D115641924BAC1910061F964 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D1BE9C3524BC34F100BA568C /* DocumentStore.swift */,
 				D115641A24BAC1A80061F964 /* NavigationModel.swift */,
 				D115642024BB25640061F964 /* LoginModel.swift */,
 			);
@@ -164,6 +194,8 @@
 		D127B51824B4896300CBF7B4 /* Chambers */ = {
 			isa = PBXGroup;
 			children = (
+				D1BE9C3924BC4BE000BA568C /* CellTemplate */,
+				D1BE9C2A24BC337600BA568C /* Realm */,
 				D115641924BAC1910061F964 /* Model */,
 				D175579224B9ED9400B4ACEA /* Cloud */,
 				D1AD9DA224B8967D00DD292B /* Bridge */,
@@ -237,6 +269,21 @@
 			path = Bridge;
 			sourceTree = "<group>";
 		};
+		D1BE9C2A24BC337600BA568C /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		D1BE9C3924BC4BE000BA568C /* CellTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				D1BE9C3A24BC4C0400BA568C /* DashboardRecordCell.swift */,
+			);
+			path = CellTemplate;
+			sourceTree = "<group>";
+		};
 		D1C448C024B7476000EDA165 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,6 +297,7 @@
 				D115641524BABABB0061F964 /* UINavigationHelper.swift */,
 				D115641C24BAD5C50061F964 /* ImageHelper.swift */,
 				D115641E24BB20B80061F964 /* FileManagerHelper.swift */,
+				D1BE9C3C24BC514200BA568C /* DateHelper.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -257,6 +305,8 @@
 		D36AC7E0139B9864A4782D51 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D1BE9C2C24BC339900BA568C /* Realm.framework */,
+				D1BE9C2B24BC339900BA568C /* RealmSwift.framework */,
 				D1AD9D9E24B87F0800DD292B /* CryptoSwift.framework */,
 				D1C448C924B7665400EDA165 /* AVFoundation.framework */,
 				D196613C24B4E74D004A336C /* AuthenticationServices.framework */,
@@ -279,6 +329,7 @@
 				D127B51424B4896300CBF7B4 /* Resources */,
 				951BC91158934DDECE0F5130 /* [CP] Embed Pods Frameworks */,
 				110B40F314C31B9D42670087 /* [CP] Copy Pods Resources */,
+				D1BE9C3124BC339A00BA568C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -458,8 +509,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1BE9C3D24BC514200BA568C /* DateHelper.swift in Sources */,
 				D1A1FDC824B49157007337B7 /* LoginViewController.swift in Sources */,
 				D1C448C824B75E5000EDA165 /* UtilitiesHelper.swift in Sources */,
+				D1BE9C3624BC34F200BA568C /* DocumentStore.swift in Sources */,
+				D1BE9C3B24BC4C0400BA568C /* DashboardRecordCell.swift in Sources */,
 				D127B51E24B4896300CBF7B4 /* ViewController.swift in Sources */,
 				D115642124BB25650061F964 /* LoginModel.swift in Sources */,
 				D1C448C424B7487C00EDA165 /* ColorsHelper.swift in Sources */,
@@ -644,6 +698,10 @@
 				CODE_SIGN_ENTITLEMENTS = Chambers/Chambers.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DZ6557Z6W8;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Chambers/Realm",
+				);
 				INFOPLIST_FILE = Chambers/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -668,6 +726,10 @@
 				CODE_SIGN_ENTITLEMENTS = Chambers/Chambers.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DZ6557Z6W8;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Chambers/Realm",
+				);
 				INFOPLIST_FILE = Chambers/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (

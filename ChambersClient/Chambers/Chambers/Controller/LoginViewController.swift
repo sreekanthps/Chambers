@@ -43,7 +43,8 @@ class LoginViewController: UIViewController {
     }
     
     func navigateToDashBoard() {
-        let newVC = NewDocumentController()
+        //let newVC = NewDocumentController()
+        let newVC = DashboardViewController()
         self.navigationController?.pushViewController(newVC, animated: false)
     }
     
