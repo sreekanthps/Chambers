@@ -53,7 +53,7 @@ class LoginView: UIView {
         button.setTitle("LOGIN", for: .normal)
         button.backgroundColor = UIColor.hexColor(Colors.Button.secondary)
         button.setTitleColor(.black, for: .normal)
-        button.titleLabel?.font = UIFont.getSfProTextBoldStyle(18)
+        button.titleLabel?.font = UIFont.getSfProTextSemiBoldStyle(22)
         button.contentHorizontalAlignment = .center
         button.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         return button

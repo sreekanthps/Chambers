@@ -46,8 +46,8 @@
             filePath = "Chambers/View/NewDocumentView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
             landmarkName = "updateDecryptButton(imageUrl:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -158,8 +158,8 @@
             filePath = "Chambers/View/NewDocumentView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "updatImageButton(data:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -190,10 +190,74 @@
             filePath = "Chambers/View/DashBoardView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "updateView(nodocuments:)"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "DashboardView"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AABDB7D6-8B05-4BE9-A370-DD459E739EBC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Chambers/Controller/BaseViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "setupNavigationBar(navModel:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AC2D590D-36EA-4C59-9C66-F2EAA96BEAFD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Chambers/Utilities/BioMetircAuthentication.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "canEvaluatePolicy(policy:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "AC2D590D-36EA-4C59-9C66-F2EAA96BEAFD - a8ebd5fce5e37023"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "default argument 0 of Chambers.BioMetircAuthentication.canEvaluatePolicy(policy: __C.LAPolicy) -&gt; Chambers.AuthenticationType"
+                  moduleName = "Chambers"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/swesree/Chambers/ChambersClient/Chambers/Chambers/Utilities/BioMetircAuthentication.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "9">
+               </Location>
+               <Location
+                  uuid = "AC2D590D-36EA-4C59-9C66-F2EAA96BEAFD - f1f5ba07c389e889"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Chambers.BioMetircAuthentication.canEvaluatePolicy(policy: __C.LAPolicy) -&gt; Chambers.AuthenticationType"
+                  moduleName = "Chambers"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/swesree/Chambers/ChambersClient/Chambers/Chambers/Utilities/BioMetircAuthentication.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "93">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

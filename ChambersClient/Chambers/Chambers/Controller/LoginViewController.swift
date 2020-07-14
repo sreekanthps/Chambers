@@ -30,7 +30,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
       super.viewDidLoad()
       GIDSignIn.sharedInstance()?.presentingViewController = self
-
+        //self.navigationController?.navigationBar.barTintColor = .white
       // Automatically sign in the user.
       //    GIDSignIn.sharedInstance()?.restorePreviousSignIn()
 
