@@ -22,6 +22,7 @@
 		D127B53124B4896700CBF7B4 /* ChambersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D127B53024B4896700CBF7B4 /* ChambersTests.swift */; };
 		D175579524B9EDB400B4ACEA /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = D175579324B9EDB400B4ACEA /* amplifyconfiguration.json */; };
 		D175579624B9EDB400B4ACEA /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = D175579424B9EDB400B4ACEA /* awsconfiguration.json */; };
+		D18A19E524BD801000D840D4 /* FileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18A19E424BD801000D840D4 /* FileModel.swift */; };
 		D196613924B4CFF9004A336C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D127B51F24B4896300CBF7B4 /* Main.storyboard */; };
 		D196613B24B4DD82004A336C /* AppDelegateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D196613A24B4DD82004A336C /* AppDelegateExtension.swift */; };
 		D196613D24B4E74D004A336C /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D196613C24B4E74D004A336C /* AuthenticationServices.framework */; };
@@ -102,6 +103,7 @@
 		D127B53224B4896700CBF7B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D175579324B9EDB400B4ACEA /* amplifyconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 		D175579424B9EDB400B4ACEA /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
+		D18A19E424BD801000D840D4 /* FileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileModel.swift; sourceTree = "<group>"; };
 		D196613A24B4DD82004A336C /* AppDelegateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateExtension.swift; sourceTree = "<group>"; };
 		D196613C24B4E74D004A336C /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		D1A1EE5024BC88D0006CCC17 /* BioMetircAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioMetircAuthentication.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				D1BE9C3524BC34F100BA568C /* DocumentStore.swift */,
 				D115641A24BAC1A80061F964 /* NavigationModel.swift */,
 				D115642024BB25640061F964 /* LoginModel.swift */,
+				D18A19E424BD801000D840D4 /* FileModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -539,6 +542,7 @@
 				D1A1EE5124BC88D0006CCC17 /* BioMetircAuthentication.swift in Sources */,
 				D115641624BABABB0061F964 /* UINavigationHelper.swift in Sources */,
 				D1AC7A0B24B6E68B003978BA /* DashBoardViewController.swift in Sources */,
+				D18A19E524BD801000D840D4 /* FileModel.swift in Sources */,
 				D1C448C224B7484C00EDA165 /* UIColorExtension.swift in Sources */,
 				D196613B24B4DD82004A336C /* AppDelegateExtension.swift in Sources */,
 				D1BE9C3F24BC721000BA568C /* DocumentViewController.swift in Sources */,

@@ -14,7 +14,8 @@ import PhotosUI
 
 
 class NewDocumentController: BaseViewController {
-    
+    var image: UIImage? = nil
+    var fileModel: FileModel? = nil
     let crypto: CryptoHelper = CryptoHelper()
     
     private var mainView: NewDocumentView {
@@ -38,7 +39,7 @@ class NewDocumentController: BaseViewController {
         //setStatusBarBackgroundColor(color: .clear)
         //preferredStatusBarStyleDark()
          //self.showDropDownShadowForNavigationBar(UIColor(white: 0.0, alpha: 0.1))
-        self.setupNavigationBar(navModel: navmodal)
+        //self.setupNavigationBar(navModel: navmodal)
     }
     
     override func loadView() {
@@ -124,13 +125,38 @@ class NewDocumentController: BaseViewController {
 
 extension NewDocumentController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-                 picker.dismiss(animated: false, completion: { () -> Void in
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                        self.mainView.updateDecryptButton(imageUrl: selectedImage)
-                    }
-                    
-                  })
+        guard let fileUrl = info[UIImagePickerController.InfoKey.imageURL] as? URL,
+        let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+        print("lastPathComponent.......\(fileUrl.lastPathComponent)") // get file Name
+        print("pathExtension......\(fileUrl.pathExtension)")
+        fileModel = FileModel(fileName: fileUrl.lastPathComponent, fileExtension: fileUrl.pathExtension, fileData: nil, fileImage: selectedImage)
+        picker.dismiss(animated: false, completion: { () -> Void in
+            self.image = selectedImage
+          DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.mainView.updateDecryptButton(fileModel: self.fileModel)
+          }
+          
+        })
+//        if let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+//                 picker.dismiss(animated: false, completion: { () -> Void in
+//                    image = selectedImage
+//                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+//                        self.mainView.updateDecryptButton(imageUrl: selectedImage)
+//                    }
+//
+//                  })
+//        }
+    }
+    func encryptData() {
+        if let image = fileModel?.fileImage, let imageData =  image.pngData(),let encrpytedData = crypto.encryptData(plainData: imageData) {
+            fileModel?.fileData = encrpytedData
+            self.mainView.updateEncryptedView()
+        }
+    }
+    func decryptData() {
+        if let encryptedData = fileModel?.fileData, let plaindata = crypto.decryptString(data: encryptedData),
+            let image  = UIImage(data: plaindata){
+            self.mainView.updateDecryptedView(image: image)
         }
     }
 }
@@ -138,39 +164,26 @@ extension NewDocumentController: UIImagePickerControllerDelegate, UINavigationCo
 extension NewDocumentController: ActionDelegate {
     public func actionSender(didReceiveAction action: DelegateAction) {
         switch action {
-        case NewDocumentView.Action.ButtonClick :
+        case NewDocumentView.Action.AddButtonClick :
              self.showPhotoMenu()
         case NewDocumentView.Action.PorcessImage(let image) :
             print("process image")
-            if let data: Data = image?.pngData() {
-                print("Image converted to Data...")
-                if let encrpytedData = crypto.encryptData(plainData: data) {
-                    let fileUrl = FileURLComponents(fileName: "testingImageName", fileExtension: "sk", directoryName: nil, directoryPath: .documentDirectory)
+            if let data: Data = image?.pngData(),
+              let encrpytedData = crypto.encryptData(plainData: data) {
+                  let fileUrl = FileURLComponents(fileName: "testingImageName", fileExtension: "sk", directoryName: nil, directoryPath: .documentDirectory)
                     do {
                         _ = try File.write(encrpytedData, to: fileUrl)
                     } catch {
                        
                     }
                 }
-                
-            }
-        case NewDocumentView.Action.DecryptImage :
-            print("Load the file for document folder and display back")
-            var encryptedData: Data? = nil
-            let fileUrl = FileURLComponents(fileName: "testingImageName", fileExtension: "sk", directoryName: nil, directoryPath: .documentDirectory)
-            do {
-                encryptedData = try File.read(from: fileUrl)
-            } catch { }
-            if let data = crypto.decryptString(data: encryptedData) {
-                self.mainView.updatImageButton(data: data)
-            }
+        case NewDocumentView.Action.EncryptButtonClick :
+            self.encryptData()
+        case NewDocumentView.Action.DecryptButtonClick :
+            self.decryptData()
         default: break
             
         }
        
     }
 }
-
-
-
-

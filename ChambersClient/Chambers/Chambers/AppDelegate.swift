@@ -54,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func setupRootViewController(launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
         window = UIWindow(frame: UIScreen.main.bounds)
         if let window = window {
-            let mainVC =  DocumentViewController()//LoginViewController()//NewDocumentController()
+            let mainVC =  NewDocumentController()//LoginViewController()//NewDocumentController()
             navigationController = UINavigationController(rootViewController: mainVC)
             window.rootViewController = navigationController
             window.makeKeyAndVisible()
