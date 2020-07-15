@@ -1,14 +1,14 @@
 //
 //  LoginViewController.swift
 //  Chambers
-//
+//  This is first page
 //  Created by Swetha Sreekanth on 7/7/20.
-//  Copyright © 2020 Citibank. All rights reserved.
+//  Copyright © 2020 Swetha. All rights reserved.
 //
 
 import UIKit
 import GoogleSignIn
-
+import FBSDKLoginKit
 enum AuthType: String {
     case facebook = "Facebook"
     case google = "Google"
@@ -16,6 +16,7 @@ enum AuthType: String {
 }
 
 class LoginViewController: UIViewController {
+    var loginModel: LoginModel? = nil
     private var loginView: LoginView {
         return self.view as! LoginView
     }
@@ -27,9 +28,18 @@ class LoginViewController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    var fbButton : FBLoginButton = {
+       let button = FBLoginButton()
+        button.permissions = ["public_profile", "email"]
+        return button
+    }()
+    
+    
     override func viewDidLoad() {
       super.viewDidLoad()
+     fbButton.delegate = self
       GIDSignIn.sharedInstance()?.presentingViewController = self
+        self.navigationItem.backBarButtonItem = nil
         //self.navigationController?.navigationBar.barTintColor = .white
       // Automatically sign in the user.
       //    GIDSignIn.sharedInstance()?.restorePreviousSignIn()
@@ -39,17 +49,15 @@ class LoginViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
-        
     }
     
     func navigateToDashBoard() {
-        //let newVC = NewDocumentController()
         let newVC = DashboardViewController()
         self.navigationController?.pushViewController(newVC, animated: false)
     }
     
     override func loadView() {
-        let view = LoginView()
+        let view = LoginView(button: fbButton)
         view.delegate = self
         self.view = view
     }
@@ -75,6 +83,19 @@ extension LoginViewController: ActionDelegate {
             default: break
         }
       }
+}
+extension LoginViewController: LoginButtonDelegate {
+     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
+            if let _ = result{
+                loginModel = LoginModel(loginResponse: result)
+                    let mainVC =  DashboardViewController()//LoginViewController()//NewDocumentController()
+                    self.navigationController?.pushViewController(mainVC, animated: false)
+                }
+            }
+            
+    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
+            print("logout completed")
+    }
 }
 
 

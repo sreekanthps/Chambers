@@ -11,9 +11,24 @@ import Photos
 import CryptoSwift
 import CommonCrypto
 import PhotosUI
+import RealmSwift
+import MobileCoreServices
+
+enum ContentType: String {
+    case PNGIMAGE = "png"
+    case JPEGIMAGE = "jpeg"
+    case PDF = "pdf"
+    case WORD = "docx"
+    case EXCEL = "xlsx"
+    case OTHER = "other"
+    
+}
 
 
 class NewDocumentController: BaseViewController {
+    var status: FileStatus = .PLAIN
+    let realm = try! Realm()
+    var fileName : String = ""
     var image: UIImage? = nil
     var fileModel: FileModel? = nil
     let crypto: CryptoHelper = CryptoHelper()
@@ -35,12 +50,12 @@ class NewDocumentController: BaseViewController {
       
     }
     private func setupNavigationBar() {
-        let navmodal = NavigationModel(title: "New Document", lbTitle: ImageName.back, rbTitle: nil, barTintColor: UIColor.hexColor(Colors.Button.secondary), titleColor: UIColor.black, lbTintColor: UIColor.hexColor(Colors.bc5), rbTintColor: UIColor.hexColor(Colors.bc5), rbWidth: 40)
-        //setStatusBarBackgroundColor(color: .clear)
-        //preferredStatusBarStyleDark()
-         //self.showDropDownShadowForNavigationBar(UIColor(white: 0.0, alpha: 0.1))
-        //self.setupNavigationBar(navModel: navmodal)
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        self.title = "Sreekanth"
+        showNavigationBar(titleColor: UIColor.hexColor(Colors.navBar), barBackGroundColor: UIColor.hexColor(Colors.navBar))
+        configureBackBarButtonItem(image: "back")
     }
+    
     
     override func loadView() {
         let view = NewDocumentView()
@@ -49,21 +64,72 @@ class NewDocumentController: BaseViewController {
     }
     
     func showPhotoMenu() {
-        let actions = ["Choose Existing",
+        let actions = [ "Select From Folder",
+                        "Choose Existing Photo",
                        "Take Photo",
                        "CANCEL"]
         UtilitiesHelper.presentActionSheet(nil, message: nil, actions: actions, controller: self) { (alertVC, selectedAction) in
             alertVC.dismiss(animated: true, completion: nil)
                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                        if selectedAction == "Choose Existing" {
+                        if selectedAction == "Choose Existing Photo" {
                                self.authorisationStatus(type: .photoLibrary)
                            } else if selectedAction == "Take Photo" {
                                self.authorisationStatus(type: .camera)
-                           }
+                           } else if selectedAction == "Select From Folder" {
+                            self.openFolderApplication()
+                          }
                        }
         }
     }
     
+    @objc func showUploadMenu() {
+        if status == .ENCRYPTED {
+           let actions = [ "Save To Device",
+                           "Save To Cloud",
+                          "CANCEL"]
+           UtilitiesHelper.presentActionSheet(nil, message: nil, actions: actions, controller: self) { (alertVC, selectedAction) in
+               alertVC.dismiss(animated: true, completion: nil)
+                          DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                           if selectedAction == "Save To Device" {
+                                  self.saveDocumentInLocal()
+                              } else if selectedAction == "Save To Cloud" {
+                                  // Need to implement cloud upload
+                              }
+                          }
+           }
+        } else {
+            self.notifyAlert("Encryption Error", err: "Please Encrypt the file before Upload")
+        }
+    }
+    
+    private func saveDocumentInLocal() {
+        let loginModel = LoginModel.shared
+        if let encryptedData = fileModel?.encryptedData, let name = fileModel?.fileName, let userId = loginModel.userID {
+            fileName =  userId + name
+            let fileUrl = FileURLComponents(fileName: fileName, fileExtension: "sk", directoryName: nil, directoryPath: .documentDirectory)
+                do {
+                    _ = try File.write(encryptedData, to: fileUrl)
+                    writeFileDetailstoDB()
+                } catch {
+                   
+                }
+            }
+        }
+    
+    private func writeFileDetailstoDB() {
+        let documents = realm.objects(DocumentStore.self)
+        let login = LoginModel.shared
+        let id = documents.count > 0 ? documents.count + 1 : 1
+        let realm = try! Realm()
+        try! realm.write {
+            let document = DocumentStore(id: id, documentName: fileModel?.fileName ?? "", timestamp: Date().unixTimestamp, fileType: fileModel?.fileExtension ?? "JPEG", datecreation: Date(),userId: login.userID,updatedDate: Date(),updateTime: Date().unixTimestamp)
+            realm.add(document)
+            try! realm.commitWrite()
+        }
+        
+    }
+
+       
     func authorisationStatus(type: UIImagePickerController.SourceType) {
         if type == .camera {
             let status = AVCaptureDevice.authorizationStatus(for: .video)
@@ -77,10 +143,7 @@ class NewDocumentController: BaseViewController {
                     }
                 }
             case .denied, .restricted:
-                print("permission denied")
-//                CommonUtilities.showSettingAlert(parentVC: self,
-//                                                 title: getLocalizedString(for: "digibank_Alert"),
-//                                                 msg: "photo_camera_error_msg_1".localized)
+                self.notifyAlert("Chambers Error", err: "Sorry, seems like you have not given permission for Digibank app to access your phone's camera.")
             }
         } else {
             let status = PHPhotoLibrary.authorizationStatus()
@@ -94,10 +157,9 @@ class NewDocumentController: BaseViewController {
                     }
                 }
             case .denied, .restricted:
-                print("Permission denied.....")
-//                CommonUtilities.showSettingAlert(parentVC: self,
-//                                                 title: getLocalizedString(for: "digibank_Alert"),
-//                                                 msg: "photo_gallery_error_msg_1".localized)
+                self.notifyAlert("Chambers Error", err: "Sorry, seems like you have not given permission for Digibank app to access your phone's gallery.")
+            @unknown default:
+                fatalError()
             }
         }
     }
@@ -121,43 +183,57 @@ class NewDocumentController: BaseViewController {
             self.present(picker, animated: true, completion: nil)
         }
     }
+    func openFolderApplication() {
+        let pickerController = UIDocumentPickerViewController(documentTypes: ["public.data",kUTTypePDF as String, kUTTypeImage as String], in: .open)
+        pickerController.delegate = self
+        pickerController.allowsMultipleSelection = false
+        present(pickerController, animated: true)
+    }
 }
 
 extension NewDocumentController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let fileUrl = info[UIImagePickerController.InfoKey.imageURL] as? URL,
         let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
-        print("lastPathComponent.......\(fileUrl.lastPathComponent)") // get file Name
-        print("pathExtension......\(fileUrl.pathExtension)")
-        fileModel = FileModel(fileName: fileUrl.lastPathComponent, fileExtension: fileUrl.pathExtension, fileData: nil, fileImage: selectedImage)
+    
+        fileModel = FileModel(fileName: fileUrl.lastPathComponent, fileExtension: fileUrl.pathExtension, fileData: selectedImage.pngData(), fileImage: selectedImage,contentType: ContentType(rawValue: fileUrl.pathExtension))
         picker.dismiss(animated: false, completion: { () -> Void in
             self.image = selectedImage
+            self.updateRightBarbuttonItem()
           DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.mainView.updateDecryptButton(fileModel: self.fileModel)
           }
           
         })
-//        if let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-//                 picker.dismiss(animated: false, completion: { () -> Void in
-//                    image = selectedImage
-//                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-//                        self.mainView.updateDecryptButton(imageUrl: selectedImage)
-//                    }
-//
-//                  })
-//        }
+
     }
     func encryptData() {
-        if let image = fileModel?.fileImage, let imageData =  image.pngData(),let encrpytedData = crypto.encryptData(plainData: imageData) {
-            fileModel?.fileData = encrpytedData
+        if let content = fileModel?.contentType, [ContentType.PNGIMAGE,ContentType.JPEGIMAGE].contains(content),let image = fileModel?.fileImage , let imageData =  image.pngData(),let encrpytedData = crypto.encryptData(plainData: imageData) {
+            fileModel?.encryptedData = encrpytedData
+            status = .ENCRYPTED
+            self.mainView.updateEncryptedView()
+        } else if let image = fileModel?.fileData , let encrpytedData = crypto.encryptData(plainData: image) {
+            fileModel?.encryptedData = encrpytedData
+            status = .ENCRYPTED
             self.mainView.updateEncryptedView()
         }
+        
     }
     func decryptData() {
-        if let encryptedData = fileModel?.fileData, let plaindata = crypto.decryptString(data: encryptedData),
-            let image  = UIImage(data: plaindata){
-            self.mainView.updateDecryptedView(image: image)
+        if let encryptedData = fileModel?.encryptedData, let plaindata = crypto.decryptString(data: encryptedData) {
+            status = .PLAIN
+            if let contentType = fileModel?.contentType, [ContentType.PNGIMAGE,ContentType.JPEGIMAGE].contains(contentType),let image  = UIImage(data: plaindata) {
+                    self.mainView.updateDecryptedView(image: image)
+            } else {
+                let image = UIImage(named: fileModel?.getImageAssetType() ?? "warning")
+                   self.mainView.updateDecryptedView(image: image)
+            }
         }
+       
+    }
+    private func updateRightBarbuttonItem() {
+        let image = UIImage(named: "upload")?.withRenderingMode(.alwaysOriginal)
+         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(self.showUploadMenu))
     }
 }
 
@@ -166,24 +242,54 @@ extension NewDocumentController: ActionDelegate {
         switch action {
         case NewDocumentView.Action.AddButtonClick :
              self.showPhotoMenu()
-        case NewDocumentView.Action.PorcessImage(let image) :
-            print("process image")
-            if let data: Data = image?.pngData(),
-              let encrpytedData = crypto.encryptData(plainData: data) {
-                  let fileUrl = FileURLComponents(fileName: "testingImageName", fileExtension: "sk", directoryName: nil, directoryPath: .documentDirectory)
-                    do {
-                        _ = try File.write(encrpytedData, to: fileUrl)
-                    } catch {
-                       
-                    }
-                }
         case NewDocumentView.Action.EncryptButtonClick :
             self.encryptData()
         case NewDocumentView.Action.DecryptButtonClick :
             self.decryptData()
+        case NewDocumentView.Action.UploadButtonClick(let isUploaded) :
+            if isUploaded {
+               showUploadMenu()
+            } else {
+                self.notifyAlert("Encryption Error", err: "Please Encrypt the file before Upload")
+            }
         default: break
             
         }
        
+    }
+}
+
+extension NewDocumentController : UIDocumentPickerDelegate {
+    public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        guard let url = urls.first else {
+            return
+        }
+        documentFromURL(pickedURL: url)
+    }
+    
+    public func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+        // Document Picker got cancelled
+    }
+    
+    private func documentFromURL(pickedURL: URL) {
+        let shouldStopAccessing = pickedURL.startAccessingSecurityScopedResource()
+        defer {
+            if shouldStopAccessing {
+                pickedURL.stopAccessingSecurityScopedResource()
+            }
+        }
+            NSFileCoordinator().coordinate(readingItemAt: pickedURL, error: NSErrorPointer.none) { (folderURL) in
+            do {
+                var image: UIImage?
+                let data = try Data(contentsOf: pickedURL)
+                if ["png","jpeg"].contains(pickedURL.pathExtension) {
+                    image = UIImage(data: data)
+                }
+                self.fileModel = FileModel(fileName: pickedURL.lastPathComponent, fileExtension: pickedURL.pathExtension, fileData: data, fileImage: image, contentType: ContentType.init(rawValue: pickedURL.pathExtension))
+                  self.updateRightBarbuttonItem()
+                   self.mainView.updateDecryptButton(fileModel: self.fileModel)
+                } catch let error { print("error: ", error.localizedDescription) }
+
+            }
     }
 }

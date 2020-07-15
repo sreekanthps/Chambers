@@ -3,7 +3,7 @@
 //  Chambers
 //
 //  Created by Swetha Sreekanth on 8/7/20.
-//  Copyright © 2020 Citibank. All rights reserved.
+//  Copyright © 2020 Swetha. All rights reserved.
 //
 
 import Foundation
@@ -11,14 +11,13 @@ import GoogleSignIn
 
 extension AppDelegate: GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-//        if let topVC = UtilitiesHelper.getTopViewController() as? LoginViewController {
-//            topVC.googleAuthSuccess(userData: user)
-//        }
-
-        let newVC = DashboardViewController()
-        self.navigationController?.pushViewController(newVC, animated: false)
-        if let viewController = UIApplication.shared.topmostViewController() as? LoginViewController {
-            viewController.googleAuthSuccess(userData: user)
+       
+        if user != nil, let _ = user.userID {
+            let _  = LoginModel(loginResponse: user)
+            let newVC = DashboardViewController()
+            self.navigationController?.pushViewController(newVC, animated: false)
+        } else {
+            // Login did not happen
         }
     }
     

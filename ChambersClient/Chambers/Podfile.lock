@@ -74,6 +74,7 @@ PODS:
     - SQLite.swift/standard (= 0.12.2)
   - SQLite.swift/standard (0.12.2)
   - Starscream (3.0.6)
+  - Toast-Swift (5.0.1)
 
 DEPENDENCIES:
   - AesGcm
@@ -90,6 +91,7 @@ DEPENDENCIES:
   - FlexLayout
   - GoogleSignIn
   - PinLayout
+  - Toast-Swift (~> 5.0.1)
 
 SPEC REPOS:
   trunk:
@@ -117,6 +119,7 @@ SPEC REPOS:
     - ReachabilitySwift
     - SQLite.swift
     - Starscream
+    - Toast-Swift
 
 SPEC CHECKSUMS:
   AesGcm: 14d70d3a321e92d3a773a9191c28b5ac534fb278
@@ -143,7 +146,8 @@ SPEC CHECKSUMS:
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
   Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
+  Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 28ea4ca6841af882fc8aded3b19e32ba5e8608a9
+PODFILE CHECKSUM: faadf431218897e1f1ac4c73ba5007200e85784a
 
 COCOAPODS: 1.9.3

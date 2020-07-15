@@ -3,7 +3,7 @@
 //  RealmDatabase
 //
 //  Created by Swetha Sreekanth on 13/7/20.
-//  Copyright © 2020 Citibank. All rights reserved.
+//  Copyright © 2020 Swetha. All rights reserved.
 //
 
 import UIKit
@@ -12,6 +12,7 @@ struct DashboardCellData {
     var fileName: String?
     var creationName: String?
     var updateName: String?
+    var imageName: String?
 }
 
 class DashboardRecordCell : UITableViewCell {
@@ -23,12 +24,17 @@ class DashboardRecordCell : UITableViewCell {
     }()
     let fileName: UILabel = {
         let label = UILabel(frame: .zero)
-        
         label.numberOfLines = 2
-        // Add font name
-        // add font color
+        label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         return label
     }()
+    private var createdLabel: UILabel {
+        let label = UILabel(frame: .zero)
+        label.text = "Creatd On : "
+        label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
+        label.textColor = UIColor.hexColor(Colors.bc3)
+        return label
+    }
     private var lineVIew: UIView = {
        let uivew = UIView()
         uivew.backgroundColor = .black
@@ -37,16 +43,21 @@ class DashboardRecordCell : UITableViewCell {
     }()
     let cerationLabel: UILabel = {
         let label = UILabel(frame: .zero)
-        // Add font name
-        // add font color
-        
+        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        label.textColor = UIColor.hexColor(Colors.bc5)
         return label
     }()
-    
+    private var updatedLabel: UILabel {
+        let label = UILabel(frame: .zero)
+        label.text = "Updated On : "
+        label.font = UIFont.systemFont(ofSize: 12, weight: .bold)
+        label.textColor = UIColor.hexColor(Colors.bc3)
+        return label
+    }
     let updated: UILabel = {
         let label = UILabel(frame: .zero)
-        // Add font name
-        // add font color
+        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        label.textColor = UIColor.hexColor(Colors.bc5)
         return label
     }()
     
@@ -64,9 +75,18 @@ class DashboardRecordCell : UITableViewCell {
                 }
                 // Column container
                 flex.addItem().direction(.column).marginLeft(15).marginRight(10).grow(1).define { (flex) in
-                    flex.addItem(fileName).marginTop(10)
-                    flex.addItem(cerationLabel).marginTop(10)
-                    flex.addItem(updated).marginTop(10).marginBottom(10)
+                    flex.addItem(fileName).marginTop(10).marginHorizontal(0)
+                    flex.addItem().paddingTop(10).direction(.row).define { (flex) in
+                        flex.addItem(createdLabel)
+                        flex.addItem(cerationLabel)
+                        
+                    }
+                    flex.addItem().marginTop(10).marginBottom(10).direction(.row).define { (flex) in
+                        flex.addItem(updatedLabel)
+                        flex.addItem(updated)
+                        
+                    }
+                    
                 }
             }
             flex.addItem(lineVIew).height(1).marginHorizontal(10)
@@ -76,11 +96,10 @@ class DashboardRecordCell : UITableViewCell {
     func configureData(data: DashboardCellData, isLast: Bool = false) {
         fileName.text = data.fileName ?? ""
         cerationLabel.text = data.creationName ?? ""
+        imgView.image = UIImage(named: data.imageName ?? "warning")
         updated.text = data.updateName ?? ""
         lineVIew.isHidden = isLast
         lineVIew.flex.isIncludedInLayout = !isLast
-        
-        
     }
     override func layoutSubviews() {
            super.layoutSubviews()

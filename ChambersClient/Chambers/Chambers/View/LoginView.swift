@@ -3,7 +3,7 @@
 //  Chambers
 //
 //  Created by Swetha Sreekanth on 7/7/20.
-//  Copyright © 2020 Citibank. All rights reserved.
+//  Copyright © 2020 Swetha. All rights reserved.
 //
 
 import UIKit
@@ -11,6 +11,7 @@ import FlexLayout
 import PinLayout
 import FBSDKCoreKit
 import FBSDKLoginKit
+
 import GoogleSignIn
 
 class LoginView: UIView {
@@ -20,6 +21,8 @@ class LoginView: UIView {
         case GoogleButtonClick
         case FacebookButtonClick
     }
+    var fbButton: FBLoginButton
+    var viewController: LoginViewController?
     weak var delegate: ActionDelegate?
     private let root: UIView = {
       let uiview = UIView()
@@ -36,9 +39,10 @@ class LoginView: UIView {
     
     private var userIdText: UITextField = {
         let user = UITextField(frame: .zero)
-        user.font = UIFont.getSfProTextRegularStyle(14)
+        user.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         user.textAlignment = .left
         user.placeholder = "User ID"
+        user.textColor = UIColor.hexColor(Colors.bc5)
         user.minimumFontSize = 17
         return user
     }()
@@ -52,53 +56,49 @@ class LoginView: UIView {
         let button = UIButton(frame: .zero)
         button.setTitle("LOGIN", for: .normal)
         button.backgroundColor = UIColor.hexColor(Colors.Button.secondary)
-        button.setTitleColor(.black, for: .normal)
-        button.titleLabel?.font = UIFont.getSfProTextSemiBoldStyle(22)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont.getDefaultFontBoldStyle(18)
         button.contentHorizontalAlignment = .center
         button.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         return button
     }()
     private var passWord: UITextField = {
         let user = UITextField(frame: .zero)
-        user.font = UIFont.getSfProTextRegularStyle(14)
+        user.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         user.textAlignment = .left
+        user.isSecureTextEntry = true
         user.placeholder = "PIN"
         user.minimumFontSize = 17
         return user
     }()
-    private let fbLogin : FBLoginButton = {
-         let loginButton = FBLoginButton()
-         //loginButton.delegate = self
-         loginButton.permissions = ["public_profile", "email"]
-         return loginButton
-    }()
-    private let googleLogin : GIDSignInButton = {
+    
+    
+     private let googleLogin : GIDSignInButton = {
          let loginButton = GIDSignInButton()
         
          return loginButton
     }()
     
-    init() {
+    init(button: FBLoginButton) {
+         self.fbButton = button
         super.init(frame: .zero)
-        
         loadView()
      }
     
+    
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+         fatalError("init(coder:) has not been implemented")
     }
     
     func loadView() {
         root.flex.define { (flex) in
-            flex.addItem(loginView).marginTop(100).minHeight(90).marginHorizontal(20).define { (flex) in
+            flex.addItem(loginView).marginTop(150).minHeight(90).marginHorizontal(30).define { (flex) in
                 flex.addItem(userIdText).marginHorizontal(16).height(44)
                 flex.addItem(lineVIew).marginLeft(16).height(1).marginRight(0)
                 flex.addItem(passWord).marginHorizontal(16).height(44)
             }
-            flex.addItem(loginButton).height(50).marginHorizontal(20).marginTop(40)
-            
-            flex.addItem(fbLogin).height(50).marginHorizontal(20).marginTop(40)
-            flex.addItem(googleLogin).height(50).marginHorizontal(20).marginTop(15)
+            flex.addItem(loginButton).height(40).marginHorizontal(30).marginTop(40)
+            flex.addItem(fbButton).height(50).marginTop(40).marginHorizontal(40)
         }
         addSubview(root)
     }
@@ -116,13 +116,15 @@ class LoginView: UIView {
         self.delegate?.actionSender(didReceiveAction: Action.ButtonClick)
     }
 }
-
+//extension LoginView: LoginButtonDelegate {
+//
+//}
 extension LoginView: LoginButtonDelegate {
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
         print("Login completed....\(result?.token)")
-        
+
     }
-    
+
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
         print("logout completed")
     }

@@ -3,7 +3,7 @@
 //  RealmDatabase
 //
 //  Created by Swetha Sreekanth on 12/7/20.
-//  Copyright © 2020 Citibank. All rights reserved.
+//  Copyright © 2020 Swetha. All rights reserved.
 //
 
 import UIKit
@@ -22,40 +22,37 @@ import RealmSwift
 
 class DashboardViewController: BaseViewController {
     var fileData: Results<DocumentStore>?
-     let realm = try! Realm()
+    let realm = try! Realm()
     
     fileprivate var mainView : DashboardView {
         return self.view as! DashboardView
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        fileData = try! Realm().objects(DocumentStore.self).sorted(byKeyPath: "timestamp")
         updateDashBord()
         navigationController?.setNavigationBarHidden(false, animated: false)
-                let navModel = NavigationModel(title: "", lbTitle: nil, rbTitle: "adddocsmall", barTintColor: UIColor.hexColor(Colors.backGround), titleColor: .black, lbTintColor: .black, rbTintColor: .black, rbWidth: 40)
-                //self.setupNavigationBar(navModel: navModel)
-               self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "adddocsmall"), style: .plain, target: self, action: #selector(addRecords))
-        //        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
-        //                                                                 target: self, action: #selector(addRecords))
-               self.navigationItem.backBarButtonItem = nil
+        showNavigationBar(titleColor: UIColor.hexColor(Colors.navBar), barBackGroundColor: UIColor.hexColor(Colors.navBar))
+        configureRightButtonItem(image: "adddocsmall")
+        configureBackBarButtonItem(image: nil)
         
-        
-    }
+   }
+  
     private func updateDashBord() {
-        if let data = fileData {
-            self.mainView.updateView(nodocuments: data.count > 1 ? false : true)
+        let count = fileData?.count ?? 0
+        if count > 0 {
+            self.mainView.tableView.reloadData()
         }
+        self.mainView.updateView(nodocuments: count > 0 ? false : true)
+
     }
     init() {
         super.init(nibName: nil, bundle: Bundle.main)
-        fileData = try! Realm().objects(DocumentStore.self).sorted(byKeyPath: "timestamp")
-   
     }
     
     required init?(coder: NSCoder) {
@@ -67,9 +64,12 @@ class DashboardViewController: BaseViewController {
         view.buttonDelegate = self
         self.view = view
     }
+    override func rightbuttonAction() {
+        addRecords()
+    }
     @objc func addRecords() {
-        // Take the user to new Screen
         let newDocument = NewDocumentController()
+        newDocument.modalPresentationStyle = UIModalPresentationStyle.popover
         self.navigationController?.pushViewController(newDocument, animated: false)
     }
 }
@@ -80,7 +80,12 @@ extension DashboardViewController: TableViewDelegte {
     }
     
     func didSelectRowAt(indexPath: IndexPath) {
-        // Add code to show details page
+        if let data = fileData {
+            let rec = data[indexPath.row]
+            let viewVC = DocumentViewController(document: rec)
+            self.navigationController?.pushViewController(viewVC, animated: false)
+        }
+        
     }
     
     func numberofRows(section: Int) -> Int {
@@ -93,7 +98,7 @@ extension DashboardViewController: TableViewDelegte {
     func cellforRowat(cell: Any?, indexPath: IndexPath) {
         if let celldata = cell as? DashboardRecordCell,  let data = fileData {
             let rec = data[indexPath.row] 
-            celldata.configureData(data: DashboardCellData(fileName: rec.documentName, creationName: String(rec.timestamp), updateName: String(rec.timestamp)),isLast: indexPath.row == (data.count - 1) ? true: false )
+            celldata.configureData(data: DashboardCellData(fileName: rec.documentName, creationName: rec.datecreation?.toString(dateFormat: DateFormat.ddMMMyyyy), updateName: rec.dateUpdation?.toString(dateFormat: DateFormat.ddMMMyyyy), imageName: rec.getImageforFileType()),isLast: indexPath.row == (data.count - 1) ? true: false )
         }
     }
     

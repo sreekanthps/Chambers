@@ -3,7 +3,7 @@
 //  Chambers
 //
 //  Created by Swetha Sreekanth on 7/7/20.
-//  Copyright © 2020 Citibank. All rights reserved.
+//  Copyright © 2020 Swetha. All rights reserved.
 //
 
 import UIKit
@@ -53,24 +53,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Method to invoke Assign First view controller dynamically
     func setupRootViewController(launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
         window = UIWindow(frame: UIScreen.main.bounds)
+        
         if let window = window {
-            let mainVC =  NewDocumentController()//LoginViewController()//NewDocumentController()
+            let mainVC =  LoginViewController()
             navigationController = UINavigationController(rootViewController: mainVC)
             window.rootViewController = navigationController
             window.makeKeyAndVisible()
-        }
-    }
-    private func addRealmObjects() {
-        let realm = try! Realm()
-        try! realm.write {
-            let doc1 = DocumentStore(id: 1, documentName: "Swetha document", timestamp: Date().unixTimestamp, fileType: "PDF", datecreation: Date())
-            let doc2 = DocumentStore(id: 2, documentName: "Sreekanth document", timestamp: Date().unixTimestamp, fileType: "JPEG", datecreation: Date())
-            let doc3 = DocumentStore(id: 3, documentName: "Indira Document", timestamp: Date().unixTimestamp, fileType: "DOCX", datecreation: Date())
-            
-            realm.add(doc1)
-            realm.add(doc2)
-            realm.add(doc3)
-            try! realm.commitWrite()
         }
     }
 

@@ -15,6 +15,7 @@
 		D115641D24BAD5C60061F964 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D115641C24BAD5C50061F964 /* ImageHelper.swift */; };
 		D115641F24BB20B80061F964 /* FileManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D115641E24BB20B80061F964 /* FileManagerHelper.swift */; };
 		D115642124BB25650061F964 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D115642024BB25640061F964 /* LoginModel.swift */; };
+		D11644F024BF3036007460A3 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11644EF24BF3036007460A3 /* DateExtension.swift */; };
 		D127B51A24B4896300CBF7B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D127B51924B4896300CBF7B4 /* AppDelegate.swift */; };
 		D127B51E24B4896300CBF7B4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D127B51D24B4896300CBF7B4 /* ViewController.swift */; };
 		D127B52324B4896700CBF7B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D127B52224B4896700CBF7B4 /* Assets.xcassets */; };
@@ -23,6 +24,7 @@
 		D175579524B9EDB400B4ACEA /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = D175579324B9EDB400B4ACEA /* amplifyconfiguration.json */; };
 		D175579624B9EDB400B4ACEA /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = D175579424B9EDB400B4ACEA /* awsconfiguration.json */; };
 		D18A19E524BD801000D840D4 /* FileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18A19E424BD801000D840D4 /* FileModel.swift */; };
+		D18CC38F24BEC63B00918382 /* UIDocumentHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18CC38E24BEC63B00918382 /* UIDocumentHelper.swift */; };
 		D196613924B4CFF9004A336C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D127B51F24B4896300CBF7B4 /* Main.storyboard */; };
 		D196613B24B4DD82004A336C /* AppDelegateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D196613A24B4DD82004A336C /* AppDelegateExtension.swift */; };
 		D196613D24B4E74D004A336C /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D196613C24B4E74D004A336C /* AuthenticationServices.framework */; };
@@ -91,6 +93,7 @@
 		D115641C24BAD5C50061F964 /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
 		D115641E24BB20B80061F964 /* FileManagerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerHelper.swift; sourceTree = "<group>"; };
 		D115642024BB25640061F964 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		D11644EF24BF3036007460A3 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		D127B51624B4896300CBF7B4 /* Chambers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chambers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D127B51924B4896300CBF7B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D127B51D24B4896300CBF7B4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +107,7 @@
 		D175579324B9EDB400B4ACEA /* amplifyconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 		D175579424B9EDB400B4ACEA /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
 		D18A19E424BD801000D840D4 /* FileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileModel.swift; sourceTree = "<group>"; };
+		D18CC38E24BEC63B00918382 /* UIDocumentHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDocumentHelper.swift; sourceTree = "<group>"; };
 		D196613A24B4DD82004A336C /* AppDelegateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateExtension.swift; sourceTree = "<group>"; };
 		D196613C24B4E74D004A336C /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		D1A1EE5024BC88D0006CCC17 /* BioMetircAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioMetircAuthentication.swift; sourceTree = "<group>"; };
@@ -310,6 +314,8 @@
 				D115641E24BB20B80061F964 /* FileManagerHelper.swift */,
 				D1BE9C3C24BC514200BA568C /* DateHelper.swift */,
 				D1A1EE5024BC88D0006CCC17 /* BioMetircAuthentication.swift */,
+				D18CC38E24BEC63B00918382 /* UIDocumentHelper.swift */,
+				D11644EF24BF3036007460A3 /* DateExtension.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -523,7 +529,9 @@
 			files = (
 				D1BE9C3D24BC514200BA568C /* DateHelper.swift in Sources */,
 				D1A1FDC824B49157007337B7 /* LoginViewController.swift in Sources */,
+				D18CC38F24BEC63B00918382 /* UIDocumentHelper.swift in Sources */,
 				D1C448C824B75E5000EDA165 /* UtilitiesHelper.swift in Sources */,
+				D11644F024BF3036007460A3 /* DateExtension.swift in Sources */,
 				D1BE9C3624BC34F200BA568C /* DocumentStore.swift in Sources */,
 				D1BE9C3B24BC4C0400BA568C /* DashboardRecordCell.swift in Sources */,
 				D127B51E24B4896300CBF7B4 /* ViewController.swift in Sources */,

@@ -20,6 +20,7 @@ target 'Chambers' do
   pod 'AmplifyPlugins/AWSCognitoAuthPlugin'
   pod 'AWSMobileClient'
   pod 'AWSPinpoint'
+  pod 'Toast-Swift', '~> 5.0.1'
  
 
   target 'ChambersTests' do
