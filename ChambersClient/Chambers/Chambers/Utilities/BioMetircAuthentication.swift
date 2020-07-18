@@ -16,6 +16,10 @@ enum AuthenticationType {
 }
 
 class BioMetircAuthentication {
+    var parentVC: UIViewController? 
+    init(viewControler: UIViewController?) {
+        self.parentVC = viewControler
+    }
      let context = LAContext()
      var error: NSError?
      func canEvaluatePolicy(policy: LAPolicy = .deviceOwnerAuthenticationWithBiometrics) -> AuthenticationType {
@@ -41,12 +45,12 @@ class BioMetircAuthentication {
         return policyFlag
     }
     
-    private func evaluatePolicy(policy: LAPolicy = .deviceOwnerAuthenticationWithBiometrics)  {
+    func evaluatePolicy(policy: LAPolicy = .deviceOwnerAuthenticationWithBiometrics)  -> Bool {
+        var authStatus: Bool = false
         context.localizedFallbackTitle = "Authenticate with Device passcode"
         context.evaluatePolicy(policy,
             localizedReason: "Access requires authentication",
             reply: {(success, error) in
-                self.context.invalidate()
                 DispatchQueue.main.async {
                     if let err = error {
                         print("evaluatePolicy Error...\(err.localizedDescription)")
@@ -72,11 +76,11 @@ class BioMetircAuthentication {
                         }
                         
                     } else {
-                        self.notifyUser("Authentication Successful",
-                                        err: "You now have full access")
+                        authStatus =  true
                     }
                 }
         })
+        return authStatus
     }
     
     func notifyUser(_ msg: String, err: String?) {
@@ -89,8 +93,8 @@ class BioMetircAuthentication {
 
         alert.addAction(cancelAction)
 
-//        self.present(alert, animated: true,
-//                            completion: nil)
+        self.parentVC?.present(alert, animated: true,
+                            completion: nil)
     }
     
     private func evaluatePolicyError(error: NSError?) {

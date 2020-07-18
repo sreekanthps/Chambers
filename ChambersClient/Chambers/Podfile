@@ -21,6 +21,7 @@ target 'Chambers' do
   pod 'AWSMobileClient'
   pod 'AWSPinpoint'
   pod 'Toast-Swift', '~> 5.0.1'
+  pod 'lottie-ios'
  
 
   target 'ChambersTests' do

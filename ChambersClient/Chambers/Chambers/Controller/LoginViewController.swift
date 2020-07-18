@@ -9,6 +9,9 @@
 import UIKit
 import GoogleSignIn
 import FBSDKLoginKit
+import AWSAuthCore
+import AWSCore
+
 enum AuthType: String {
     case facebook = "Facebook"
     case google = "Google"
@@ -40,11 +43,10 @@ class LoginViewController: UIViewController {
      fbButton.delegate = self
       GIDSignIn.sharedInstance()?.presentingViewController = self
         self.navigationItem.backBarButtonItem = nil
-        //self.navigationController?.navigationBar.barTintColor = .white
-      // Automatically sign in the user.
-      //    GIDSignIn.sharedInstance()?.restorePreviousSignIn()
+        // Automatically sign in the user.
+       //    GIDSignIn.sharedInstance()?.restorePreviousSignIn()
 
-      // ...
+       // ...
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -87,6 +89,9 @@ extension LoginViewController: ActionDelegate {
 extension LoginViewController: LoginButtonDelegate {
      func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
             if let _ = result{
+                let token = result?.token?.tokenString ?? ""
+                let fbAuthRequest = WebIdentityModel(providerId: "289119678902614", roleArn: "arn:aws:iam::873801084462:role/chamberFacebookRole", roleSessionName: "fbacessS3", token: token)
+                
                 loginModel = LoginModel(loginResponse: result)
                     let mainVC =  DashboardViewController()//LoginViewController()//NewDocumentController()
                     self.navigationController?.pushViewController(mainVC, animated: false)

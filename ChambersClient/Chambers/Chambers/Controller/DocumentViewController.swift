@@ -10,7 +10,8 @@
 import UIKit
 
 class DocumentViewController: BaseViewController  {
-    let biometric = BioMetircAuthentication()
+    var encryptedData: Data? = nil
+    var biometric: BioMetircAuthentication = BioMetircAuthentication(viewControler: nil)
     var policy = AuthenticationType.NONE
     let crypto: CryptoHelper = CryptoHelper()
     var store: DocumentStore?
@@ -21,15 +22,19 @@ class DocumentViewController: BaseViewController  {
     init(document: DocumentStore) {
         store = document
         super.init(nibName: nil, bundle: Bundle.main)
-    }
+        
+       }
+   
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     override func viewDidLoad() {
       super.viewDidLoad()
+       biometric.parentVC = self
+      biometric = BioMetircAuthentication(viewControler: self)
       self.setupNavigationBar()
-      
+      retrieveDocument()
     }
     
     private func canEvaluatePolicy() -> String? {
@@ -45,24 +50,26 @@ class DocumentViewController: BaseViewController  {
         case AuthenticationType.NONE :
             print("No authentication available")
             // No authentication available
-        default: print("No authentication available")
+        default: return image
         }
         return image
     }
      override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        retrieveDocument()
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //let image = canEvaluatePolicy()
-        //mainView.updateAuthenticationType(type: policy, authString: image)
+        let image = canEvaluatePolicy()
+        mainView.updateAuthenticationType(type: policy, authString: image)
+        if image == nil {
+            mainView.updateDocumentDetails(name: nil, fileImage: nil)
+        }
         
     }
     private func setupNavigationBar() {
-        let navmodal = NavigationModel(title: "New Document", lbTitle: ImageName.back, rbTitle: nil, barTintColor: UIColor.hexColor(Colors.Button.secondary), titleColor: UIColor.black, lbTintColor: UIColor.hexColor(Colors.bc5), rbTintColor: UIColor.hexColor(Colors.bc5), rbWidth: 40)
-        
-         //self.setupNavigationBar(navModel: navmodal)
+        showNavigationBar(titleColor: UIColor.hexColor(Colors.navBar), barBackGroundColor: UIColor.hexColor(Colors.navBar))
+           configureBackBarButtonItem(image: "back")
     }
     
     override func loadView() {
@@ -71,10 +78,24 @@ class DocumentViewController: BaseViewController  {
         self.view = view
     }
     func evaluateBiometric() {
-        
+        if  biometric.evaluatePolicy() {
+            updateDecryptedDetails()
+        }
+    }
+    func updateDecryptedDetails() {
+        decryptData()
+        if let documentType = store?.getImageforFileType(),let data = encryptedData, ["png","jpeg"].contains(documentType) {
+            self.mainView.updateDocumentDetails(name: store?.documentName, fileImage: UIImage(data: data))
+        } else {
+            self.mainView.updateDocumentDetails(name: store?.documentName, fileImage: UIImage(named: store?.getImageforFileType() ?? "warning"))
+        }
+    }
+    private func decryptData() {
+        if let data = encryptedData, let content = crypto.decryptString(data: data) {
+          encryptedData = content
+        }
     }
     private func retrieveDocument() {
-        var encryptedData: Data? = nil
         let login = LoginModel.shared
         if let dbDocument = store, let fileName =  dbDocument.documentName, let id = login.userID{
             let fileName = id + fileName
@@ -82,16 +103,26 @@ class DocumentViewController: BaseViewController  {
             do {
                 encryptedData = try File.read(from: fileUrl)
             } catch { }
-            if let data = crypto.decryptString(data: encryptedData) , let image = UIImage(data: data){
-                print("image found....")
-                self.mainView.updateImage(data: image)
-                
-            }
+            
         }
     }
 }
 extension DocumentViewController: ActionDelegate {
     func actionSender(didReceiveAction action: DelegateAction) {
+        switch action {
+        case DocumentView.Action.AuthenticateDocument :
+            // Biometric evaluation
+            self.evaluateBiometric()
+        case DocumentView.Action.DecryptButtonClick :
+            // Decrypt the data
+            //self.updateDecryptedDetails()
+            self.evaluateBiometric()
+        case DocumentView.Action.EncryptButtonClick :
+          // Encrypt Data
+            //self.enc
+            self.evaluateBiometric()    
+        default: break
+        }
         
     }
     

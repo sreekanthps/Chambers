@@ -14,6 +14,7 @@ import AmplifyPlugins
 import RealmSwift
 
 @UIApplicationMain
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
@@ -26,15 +27,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GIDSignIn.sharedInstance().delegate = self
         //addRealmObjects()
         setupRootViewController(launchOptions: launchOptions)
-        do {
-            
-            Amplify.Logging.logLevel = .verbose
-            //try Amplify.add(plugin: AWSCognitoAuthPlugin())
-            try Amplify.configure()
-            
-        } catch {
-            print("An error occurred setting up Amplify: \(error)")
-        }
+//        do {
+//            
+//            Amplify.Logging.logLevel = .verbose
+//            //try Amplify.add(plugin: AWSCognitoAuthPlugin())
+//            try Amplify.configure()
+//            
+//        } catch {
+//            print("An error occurred setting up Amplify: \(error)")
+//        }
         return true
     }
     
@@ -55,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         
         if let window = window {
-            let mainVC =  LoginViewController()
+            let mainVC =  SplashViewController()
             navigationController = UINavigationController(rootViewController: mainVC)
             window.rootViewController = navigationController
             window.makeKeyAndVisible()

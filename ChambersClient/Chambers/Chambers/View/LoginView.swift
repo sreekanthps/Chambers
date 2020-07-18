@@ -99,6 +99,7 @@ class LoginView: UIView {
             }
             flex.addItem(loginButton).height(40).marginHorizontal(30).marginTop(40)
             flex.addItem(fbButton).height(50).marginTop(40).marginHorizontal(40)
+            flex.addItem(googleLogin).height(50).marginTop(20).marginHorizontal(37)
         }
         addSubview(root)
     }
@@ -114,18 +115,5 @@ class LoginView: UIView {
     }
     @objc func buttonPressed(_ sender: UIButton) {
         self.delegate?.actionSender(didReceiveAction: Action.ButtonClick)
-    }
-}
-//extension LoginView: LoginButtonDelegate {
-//
-//}
-extension LoginView: LoginButtonDelegate {
-    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
-        print("Login completed....\(result?.token)")
-
-    }
-
-    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
-        print("logout completed")
     }
 }
