@@ -53,6 +53,7 @@ class BaseViewController : UIViewController {
     func configureBackBarButtonItem(image: String?, text: String? = nil) {
         if let img = image {
             let image = UIImage(named: img)?.withRenderingMode(.alwaysOriginal)
+            
             self.navigationItem.leftBarButtonItem =  UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(self.leftbuttonAction))
         } else {
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: text, style: .plain, target: self, action: #selector(self.leftbuttonAction))

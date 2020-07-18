@@ -68,8 +68,8 @@ class DocumentViewController: BaseViewController  {
         
     }
     private func setupNavigationBar() {
-        showNavigationBar(titleColor: UIColor.hexColor(Colors.navBar), barBackGroundColor: UIColor.hexColor(Colors.navBar))
-           configureBackBarButtonItem(image: "back")
+        showNavigationBar(titleColor: UIColor.hexColor(Colors.navBar1), barBackGroundColor: UIColor.hexColor(Colors.navBar1))
+           configureBackBarButtonItem(image: "backswe")
     }
     
     override func loadView() {

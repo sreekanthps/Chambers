@@ -57,6 +57,14 @@
 		D1C448CA24B7665400EDA165 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1C448C924B7665400EDA165 /* AVFoundation.framework */; };
 		D1C448CC24B768D200EDA165 /* ActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C448CB24B768D200EDA165 /* ActionDelegate.swift */; };
 		D1DBB3AA24C00A8900387F63 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DBB3A924C00A8900387F63 /* SplashView.swift */; };
+		D1F6DE9A24C32ED400CC64D8 /* AWSLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F6DE9924C32ED400CC64D8 /* AWSLoginController.swift */; };
+		D1F6DE9C24C32EEE00CC64D8 /* AWSLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F6DE9B24C32EEE00CC64D8 /* AWSLoginView.swift */; };
+		D1F6DE9E24C3410C00CC64D8 /* safeicon.json in Resources */ = {isa = PBXBuildFile; fileRef = D1F6DE9D24C3410B00CC64D8 /* safeicon.json */; };
+		D1F6DEA024C341DD00CC64D8 /* 17588-safe-icon.json in Resources */ = {isa = PBXBuildFile; fileRef = D1F6DE9F24C341DD00CC64D8 /* 17588-safe-icon.json */; };
+		D1F6DEA324C3508200CC64D8 /* SingupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F6DEA124C3508200CC64D8 /* SingupViewController.swift */; };
+		D1F6DEA424C3508200CC64D8 /* SignupConfirmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F6DEA224C3508200CC64D8 /* SignupConfirmController.swift */; };
+		D1F6DEA724C3509900CC64D8 /* SignUpConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F6DEA524C3509900CC64D8 /* SignUpConfirmView.swift */; };
+		D1F6DEA824C3509900CC64D8 /* SingUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F6DEA624C3509900CC64D8 /* SingUpView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,6 +151,14 @@
 		D1C448C924B7665400EDA165 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D1C448CB24B768D200EDA165 /* ActionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionDelegate.swift; sourceTree = "<group>"; };
 		D1DBB3A924C00A8900387F63 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		D1F6DE9924C32ED400CC64D8 /* AWSLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSLoginController.swift; sourceTree = "<group>"; };
+		D1F6DE9B24C32EEE00CC64D8 /* AWSLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSLoginView.swift; sourceTree = "<group>"; };
+		D1F6DE9D24C3410B00CC64D8 /* safeicon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = safeicon.json; sourceTree = "<group>"; };
+		D1F6DE9F24C341DD00CC64D8 /* 17588-safe-icon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "17588-safe-icon.json"; sourceTree = "<group>"; };
+		D1F6DEA124C3508200CC64D8 /* SingupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingupViewController.swift; sourceTree = "<group>"; };
+		D1F6DEA224C3508200CC64D8 /* SignupConfirmController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupConfirmController.swift; sourceTree = "<group>"; };
+		D1F6DEA524C3509900CC64D8 /* SignUpConfirmView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpConfirmView.swift; sourceTree = "<group>"; };
+		D1F6DEA624C3509900CC64D8 /* SingUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingUpView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,6 +275,8 @@
 		D18CF0F924C0197400DDBBBB /* Animation */ = {
 			isa = PBXGroup;
 			children = (
+				D1F6DE9D24C3410B00CC64D8 /* safeicon.json */,
+				D1F6DE9F24C341DD00CC64D8 /* 17588-safe-icon.json */,
 				D18CF0FA24C0199000DDBBBB /* secureock.json */,
 			);
 			path = Animation;
@@ -267,12 +285,15 @@
 		D1A1FDC624B4913C007337B7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D1F6DEA224C3508200CC64D8 /* SignupConfirmController.swift */,
+				D1F6DEA124C3508200CC64D8 /* SingupViewController.swift */,
 				D1A1FDC724B49157007337B7 /* LoginViewController.swift */,
 				D1AC7A0F24B6E74A003978BA /* NewDocumentController.swift */,
 				D1AC7A0A24B6E68B003978BA /* DashBoardViewController.swift */,
 				D115641724BABE7B0061F964 /* BaseViewController.swift */,
 				D1BE9C3E24BC720F00BA568C /* DocumentViewController.swift */,
 				D14D8F8724BFFCA100C8A4CF /* SplashViewController.swift */,
+				D1F6DE9924C32ED400CC64D8 /* AWSLoginController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -280,11 +301,14 @@
 		D1A1FDC924B49196007337B7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D1F6DEA524C3509900CC64D8 /* SignUpConfirmView.swift */,
+				D1F6DEA624C3509900CC64D8 /* SingUpView.swift */,
 				D1A1FDCA24B491A8007337B7 /* LoginView.swift */,
 				D1AC7A0C24B6E6AE003978BA /* DashBoardView.swift */,
 				D1C448BE24B7417800EDA165 /* NewDocumentView.swift */,
 				D1BE9C4024BC752600BA568C /* DocumentView.swift */,
 				D1DBB3A924C00A8900387F63 /* SplashView.swift */,
+				D1F6DE9B24C32EEE00CC64D8 /* AWSLoginView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -444,8 +468,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1F6DE9E24C3410C00CC64D8 /* safeicon.json in Resources */,
 				D175579624B9EDB400B4ACEA /* awsconfiguration.json in Resources */,
 				D196613924B4CFF9004A336C /* Main.storyboard in Resources */,
+				D1F6DEA024C341DD00CC64D8 /* 17588-safe-icon.json in Resources */,
 				D127B52624B4896700CBF7B4 /* LaunchScreen.storyboard in Resources */,
 				D127B52324B4896700CBF7B4 /* Assets.xcassets in Resources */,
 				D18CF0FB24C0199000DDBBBB /* secureock.json in Resources */,
@@ -561,20 +587,26 @@
 				D1AD9DA724B8A87500DD292B /* SwCrypt.swift in Sources */,
 				D115641824BABE7B0061F964 /* BaseViewController.swift in Sources */,
 				D127B51A24B4896300CBF7B4 /* AppDelegate.swift in Sources */,
+				D1F6DEA724C3509900CC64D8 /* SignUpConfirmView.swift in Sources */,
 				D1AC7A1024B6E74A003978BA /* NewDocumentController.swift in Sources */,
 				D1C448BF24B7417800EDA165 /* NewDocumentView.swift in Sources */,
 				D115641B24BAC1A80061F964 /* NavigationModel.swift in Sources */,
 				D1AC7A0D24B6E6AE003978BA /* DashBoardView.swift in Sources */,
 				D1BE9C4124BC752600BA568C /* DocumentView.swift in Sources */,
+				D1F6DE9A24C32ED400CC64D8 /* AWSLoginController.swift in Sources */,
+				D1F6DEA824C3509900CC64D8 /* SingUpView.swift in Sources */,
 				D149905024C0887B00DFBB56 /* AwsWebIdentityModel.swift in Sources */,
 				D115641D24BAD5C60061F964 /* ImageHelper.swift in Sources */,
 				D1C448CC24B768D200EDA165 /* ActionDelegate.swift in Sources */,
+				D1F6DEA324C3508200CC64D8 /* SingupViewController.swift in Sources */,
 				D1A1EE5124BC88D0006CCC17 /* BioMetircAuthentication.swift in Sources */,
+				D1F6DEA424C3508200CC64D8 /* SignupConfirmController.swift in Sources */,
 				D115641624BABABB0061F964 /* UINavigationHelper.swift in Sources */,
 				D1AC7A0B24B6E68B003978BA /* DashBoardViewController.swift in Sources */,
 				D1DBB3AA24C00A8900387F63 /* SplashView.swift in Sources */,
 				D18A19E524BD801000D840D4 /* FileModel.swift in Sources */,
 				D1C448C224B7484C00EDA165 /* UIColorExtension.swift in Sources */,
+				D1F6DE9C24C32EEE00CC64D8 /* AWSLoginView.swift in Sources */,
 				D196613B24B4DD82004A336C /* AppDelegateExtension.swift in Sources */,
 				D1BE9C3F24BC721000BA568C /* DocumentViewController.swift in Sources */,
 				D115641F24BB20B80061F964 /* FileManagerHelper.swift in Sources */,

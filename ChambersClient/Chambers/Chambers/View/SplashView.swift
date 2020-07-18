@@ -25,7 +25,7 @@ class SplashView :UIView {
       return uiview
     }()
     init() {
-        lottieView = AnimationView(name: "secureock", bundle: Bundle.main)
+        lottieView = AnimationView(name: "safeicon", bundle: Bundle.main)
         super.init(frame: .zero)
         configure()
         loadView()

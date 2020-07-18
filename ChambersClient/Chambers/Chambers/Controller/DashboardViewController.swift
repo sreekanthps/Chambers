@@ -37,9 +37,9 @@ class DashboardViewController: BaseViewController {
         fileData = try! Realm().objects(DocumentStore.self).sorted(byKeyPath: "timestamp")
         updateDashBord()
         navigationController?.setNavigationBarHidden(false, animated: false)
-        showNavigationBar(titleColor: UIColor.hexColor(Colors.navBar), barBackGroundColor: UIColor.hexColor(Colors.navBar))
-        configureRightButtonItem(image: "adddocsmall")
-        configureBackBarButtonItem(image: nil)
+        showNavigationBar(titleColor: UIColor.hexColor(Colors.navBar1), barBackGroundColor: UIColor.hexColor(Colors.navBar1))
+        configureRightButtonItem(image: "addplus")
+        configureBackBarButtonItem(image: "exit1")
         
    }
   

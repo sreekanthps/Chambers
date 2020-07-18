@@ -1,28 +1,25 @@
 //
-//  LoginView.swift
+//  AWSLoginView.swift
 //  Chambers
 //
-//  Created by Swetha Sreekanth on 7/7/20.
-//  Copyright © 2020 Swetha. All rights reserved.
+//  Created by Swetha Sreekanth on 18/7/20.
+//  Copyright © 2020 Citibank. All rights reserved.
 //
 
 import UIKit
-import FlexLayout
-import PinLayout
-import FBSDKCoreKit
-import FBSDKLoginKit
 
-import GoogleSignIn
-
-class LoginView: UIView {
-    
+enum LoginType {
+    case LOGIN
+    case GOOGLE
+    case FACEBOOK
+    case NONE
+}
+class AWSLoginView: UIView {
     enum Action: DelegateAction {
-        case ButtonClick
-        case GoogleButtonClick
-        case FacebookButtonClick
+        case ButtonClick(loginType: LoginType)
+        case NormalLogin(userID: String?, password: String?)
     }
-    var fbButton: FBLoginButton
-    var viewController: LoginViewController?
+    var loginType: LoginType = .NONE
     weak var delegate: ActionDelegate?
     private let root: UIView = {
       let uiview = UIView()
@@ -76,16 +73,30 @@ class LoginView: UIView {
     }()
     
     
-     private let googleLogin : GIDSignInButton = {
-         let loginButton = GIDSignInButton()
-         loginButton.addTarget(self, action: #selector(googlebuttonPressed(_:)), for: .touchUpInside)
-         return loginButton
+    private let fbloginButton : UIButton = {
+        let button = UIButton(frame: .zero)
+        button.setTitle("FaceBook Login", for: .normal)
+        button.backgroundColor = UIColor.hexColor(Colors.Button.secondary)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont.getDefaultFontBoldStyle(18)
+        button.contentHorizontalAlignment = .center
+        button.addTarget(self, action: #selector(fbbuttonPressed(_:)), for: .touchUpInside)
+        return button
+    }()
+    private let googleloginButton : UIButton = {
+        let button = UIButton(frame: .zero)
+        button.setTitle("FaceBook Login", for: .normal)
+        button.backgroundColor = UIColor.hexColor(Colors.Button.secondary)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont.getDefaultFontBoldStyle(18)
+        button.contentHorizontalAlignment = .center
+        button.addTarget(self, action: #selector(googlebuttonPressed(_:)), for: .touchUpInside)
+        return button
     }()
     
-    init(button: FBLoginButton) {
-         self.fbButton = button
+    init() {
         super.init(frame: .zero)
-        configure()
+       
         loadView()
      }
     
@@ -93,9 +104,7 @@ class LoginView: UIView {
     required init?(coder aDecoder: NSCoder) {
          fatalError("init(coder:) has not been implemented")
     }
-    private func configure() {
-        fbButton.addTarget(self, action: #selector(fbbuttonPressed(_:)), for: .touchUpInside)
-    }
+    
     
     func loadView() {
         root.flex.define { (flex) in
@@ -105,8 +114,7 @@ class LoginView: UIView {
                 flex.addItem(passWord).marginHorizontal(16).height(44)
             }
             flex.addItem(loginButton).height(40).marginHorizontal(30).marginTop(40)
-            flex.addItem(fbButton).height(50).marginTop(40).marginHorizontal(40)
-            flex.addItem(googleLogin).height(50).marginTop(20).marginHorizontal(37)
+            flex.addItem(fbloginButton).height(40).marginHorizontal(30).marginTop(40)
         }
         addSubview(root)
     }
@@ -121,14 +129,14 @@ class LoginView: UIView {
         root.flex.layout()
     }
     @objc func buttonPressed(_ sender: UIButton) {
-        self.delegate?.actionSender(didReceiveAction: Action.ButtonClick)
-    }
+        self.delegate?.actionSender(didReceiveAction: Action.NormalLogin(userID: userIdText.text, password: passWord.text))
     @objc func fbbuttonPressed(_ sender: UIButton) {
         print("facebook button pressed")
-        //self.delegate?.actionSender(didReceiveAction: Action.ButtonClick)
+        self.delegate?.actionSender(didReceiveAction: Action.ButtonClick(loginType: .FACEBOOK))
     }
     @objc func googlebuttonPressed(_ sender: UIButton) {
-        //self.delegate?.actionSender(didReceiveAction: Action.ButtonClick)
-        print("Google button pressed")
+        self.delegate?.actionSender(didReceiveAction: Action.ButtonClick(loginType: .GOOGLE))
+       
     }
+    
 }

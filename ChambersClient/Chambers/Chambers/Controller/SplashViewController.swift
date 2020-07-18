@@ -31,7 +31,7 @@ class SplashViewController: BaseViewController {
     }
     
     func navigateToDashBoard() {
-        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (nil) in
+        Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false) { (nil) in
              let newVC = LoginViewController()
             self.navigationController?.pushViewController(newVC, animated: false)
         }

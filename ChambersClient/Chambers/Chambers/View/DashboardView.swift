@@ -64,7 +64,7 @@ class DashboardView: UIView {
         rootView.flex.define { (flex) in
             flex.addItem(tableView).height(90%).marginHorizontal(15).marginTop(30)
             flex.addItem(plusView).justifyContent(.center).width(100%).height(100%).define { (flex) in
-                flex.addItem(plusButton).size(200).alignSelf(.center)
+                flex.addItem(add).size(200).alignSelf(.center)
             }
         }
         addSubview(rootView)

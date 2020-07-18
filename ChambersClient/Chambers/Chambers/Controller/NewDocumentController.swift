@@ -52,8 +52,8 @@ class NewDocumentController: BaseViewController {
     private func setupNavigationBar() {
         navigationController?.setNavigationBarHidden(false, animated: false)
         self.title = "Sreekanth"
-        showNavigationBar(titleColor: UIColor.hexColor(Colors.navBar), barBackGroundColor: UIColor.hexColor(Colors.navBar))
-        configureBackBarButtonItem(image: "back")
+        showNavigationBar(titleColor: UIColor.hexColor(Colors.navBar1), barBackGroundColor: UIColor.hexColor(Colors.navBar1))
+        configureBackBarButtonItem(image: "backswe")
     }
     
     
