@@ -3,7 +3,7 @@
 //  Chambers
 //
 //  Created by Swetha Sreekanth on 18/7/20.
-//  Copyright © 2020 Citibank. All rights reserved.
+//  Copyright © 2020 Swetha. All rights reserved.
 //
 
 import UIKit
@@ -92,7 +92,6 @@ class AWSLoginController: BaseViewController {
                case .success:
                    print("Successfully signed out")
                    let authprovider = self.social == .FACEBOOK ? AuthProvider.facebook : AuthProvider.google
-                   print("authprovider....\(authprovider)")
                    self.signIn(username: self.login?.userName ?? "", password: self.login?.passWord ?? "")
                case .failure(let error):
                    print("Sign out failed with error \(error)")

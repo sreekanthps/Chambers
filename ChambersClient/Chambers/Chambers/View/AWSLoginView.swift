@@ -3,7 +3,7 @@
 //  Chambers
 //
 //  Created by Swetha Sreekanth on 18/7/20.
-//  Copyright © 2020 Citibank. All rights reserved.
+//  Copyright © 2020 Swetha. All rights reserved.
 //
 
 import UIKit
@@ -90,7 +90,7 @@ class AWSLoginView: UIView {
     private let googleloginButton : UIButton = {
         let button = UIButton(frame: .zero)
         //button.setTitle("Google Login", for: .normal)
-        button.setBackgroundImage(UIImage(named: "google1"), for: .normal)
+        button.setBackgroundImage(UIImage(named: "googleswe1"), for: .normal)
         //button.backgroundColor = UIColor.hexColor(Colors.Button.secondary)
         //button.setTitleColor(.white, for: .normal)
         //button.titleLabel?.font = UIFont.getDefaultFontBoldStyle(18)

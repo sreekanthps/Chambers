@@ -114,12 +114,10 @@ extension DashboardViewController: TableViewDelegte {
     }
     
     func didSelectRowAt(indexPath: IndexPath) {
-        if let data = fileData {
-            let rec = data[indexPath.row]
+            let rec = fileData?[indexPath.row]
             let viewVC = DocumentViewController(document: rec)
             self.navigationController?.pushViewController(viewVC, animated: false)
-        }
-        
+       
     }
     
     func numberofRows(section: Int) -> Int {

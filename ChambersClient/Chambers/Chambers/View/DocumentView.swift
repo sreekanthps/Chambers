@@ -18,7 +18,7 @@ class DocumentView: UIView {
        case AuthenticateDocument
     }
     weak var delegate: ActionDelegate?
-    var status: FileStatus = .PLAIN
+    var status: FileStatus = .ENCRYPTED
     
     let plusButton: UIButton = {
         let button = UIButton()
@@ -33,7 +33,11 @@ class DocumentView: UIView {
     }()
     let authView  = UIView()
     
-    private let image = UIImageView()
+    let image : UIImageView = {
+        let image = UIImageView(frame: .zero)
+        image.image = UIImage(named: "encrypted")
+        return image
+    }()
     let label: UILabel = {
         let label = UILabel()
         label.text = "Please Authenticate with Device Authorization"
@@ -43,13 +47,13 @@ class DocumentView: UIView {
     }()
     let cryptButton : UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "binary"), for: .normal)
+        button.setImage(UIImage(named: "binaryencrypt"), for: .normal)
         button.addTarget(self, action: #selector(cryptButton(_:)), for: .touchUpInside)
         return button
     }()
     private let fileName: UILabel = {
         let label = UILabel()
-        label.text = ""
+        label.text = "Select the Decrypt Button to show file"
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 22, weight: .bold)
         label.textColor = UIColor.hexColor(Colors.bc3)
@@ -82,13 +86,13 @@ class DocumentView: UIView {
         delegate?.actionSender(didReceiveAction: Action.AuthenticateDocument)
     }
     
-    func updateAuthenticationType(type: AuthenticationType, authString: String?) {
-        if let img = authString {
-            plusButton.setImage(UIImage(named: img), for: .normal)
-        } else {
-            updateViewStatus(status: false)
-        }
-    }
+//    func updateAuthenticationType(type: AuthenticationType, authString: String?) {
+//        if let img = authString {
+//            plusButton.setImage(UIImage(named: img), for: .normal)
+//        } else {
+//            updateViewStatus(status: false)
+//        }
+//    }
     
     func updateDocumentDetails(name: String?, fileImage: UIImage?) {
         if let img = fileImage, let fname = name {
@@ -100,33 +104,36 @@ class DocumentView: UIView {
             image.image = UIImage(named: "encrypted")
         }
     }
-    func updateAuthentceViewDetails(name: String?, fileImage: UIImage?) {
-         status = .PLAIN
-         fileName.text = name
-         image.image = fileImage
-         cryptButton.setImage(UIImage(named: "binary"), for: .normal)
-    }
-    
-    private func updateViewStatus(status: Bool = false) {
-        image.isHidden = status
-        image.flex.isIncludedInLayout = !status
-        authView.isHidden = !status
-        authView.flex.isIncludedInLayout = status
-    }
+    //    func updateAuthentceViewDetails(name: String?, fileImage: UIImage?,status: FileStatus = .PLAIN) {
+    //        self.status = status
+    //         fileName.text = name
+    //         image.image = fileImage
+    //     }
+    //
+    //
+    //    private func updateViewStatus(status: Bool = false) {
+    //        image.isHidden = status
+    //        image.flex.isIncludedInLayout = !status
+    //        authView.isHidden = !status
+    //        authView.flex.isIncludedInLayout = status
+    //    }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     func updateImage(data : UIImage?) {
         image.image = data
     }
-    
+    func updateDocumentView(fileName: String?, image: UIImage?) {
+        self.fileName.text = fileName
+        self.image.image = image
+    }
     func loadView() {
         
         root.flex.padding(10).alignItems(.center).define { (flex) in
-            flex.addItem(authView).justifyContent(.center).alignItems(.center).width(100%).height(100%).define { (flex) in
-                flex.addItem(label).marginTop(-40).marginHorizontal(30)
-                flex.addItem(plusButton).size(100).marginTop(30)
-            }
+//            flex.addItem(authView).justifyContent(.center).alignItems(.center).width(100%).height(100%).define { (flex) in
+//                flex.addItem(label).marginTop(-40).marginHorizontal(30)
+//                flex.addItem(plusButton).size(100).marginTop(30)
+//            }
             flex.addItem(dataView).alignItems(.center).width(100%).height(100%).define { (flex) in
                 flex.addItem(fileName).marginTop(70)
                 flex.addItem(image).marginTop(40).size(270).alignSelf(.center)
@@ -137,6 +144,7 @@ class DocumentView: UIView {
         }
         addSubview(root)
     }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
 

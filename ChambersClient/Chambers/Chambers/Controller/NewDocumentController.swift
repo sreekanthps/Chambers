@@ -3,7 +3,7 @@
 //  Chambers
 //
 //  Created by Swetha Sreekanth on 9/7/20.
-//  Copyright © 2020 Citibank. All rights reserved.
+//  Copyright © 2020 Swetha. All rights reserved.
 //
 
 import UIKit
@@ -32,7 +32,6 @@ enum Storage: String {
 }
 
 class NewDocumentController: BaseViewController {
-    var storage: Storage = .LOCAL
     var time: Int64 = 0
     var status: FileStatus = .PLAIN
     let realm = try! Realm()
@@ -104,7 +103,7 @@ class NewDocumentController: BaseViewController {
                                   // Need to implement cloud upload
                                   self.time = Date().unixTimestamp
                                   self.writeFileDetailstoDB(time: self.time,storage: .CLOUD)
-                                  self.uploadDatatoCloud()
+                                  self.uploadDatatoCloud(time: self.time)
                               }
                           }
            }
@@ -115,15 +114,16 @@ class NewDocumentController: BaseViewController {
     
     
     private func saveDocumentInLocal() {
-        time = Date().unixTimestamp
         let loginModel = LoginModel.shared
         if let encryptedData = fileModel?.encryptedData, let name = fileModel?.fileName, let userId = loginModel.userID {
-            fileName =  userId + "_" + String(time) + "_" + name
+            self.time = Date().unixTimestamp
+            writeFileDetailstoDB(time: self.time,storage: .LOCAL)
+            fileName =  String(time) + "_" + name
             let fileUrl = FileURLComponents(fileName: fileName, fileExtension: "sk", directoryName: nil, directoryPath: .documentDirectory)
                 do {
                       _ = try File.write(encryptedData, to: fileUrl)
                     self.displayToastMessage(message: "File Saved locally on device")
-                    writeFileDetailstoDB(time: self.time,storage: .LOCAL)
+                    
                 } catch {
                    
                 }
@@ -136,7 +136,7 @@ class NewDocumentController: BaseViewController {
         let id = documents.count > 0 ? documents.count + 1 : 1
         
         try! realm.write {
-            let document = DocumentStore(id: id, documentName: fileModel?.fileName ?? "", timestamp: Date().unixTimestamp, fileType: fileModel?.fileExtension ?? "JPEG", datecreation: Date(),userId: login.userID,updatedDate: Date(),updateTime: Date().unixTimestamp,storage: self.storage.rawValue)
+            let document = DocumentStore(id: id, documentName: fileModel?.fileName ?? "", timestamp: time, fileType: fileModel?.fileExtension ?? "JPEG", datecreation: Date(),userId: login.userID,updatedDate: Date(),updateTime: Date().unixTimestamp,storage: storage.rawValue)
             realm.add(document)
             try! realm.commitWrite()
         }
@@ -146,7 +146,7 @@ class NewDocumentController: BaseViewController {
     func uploadDatatoCloud(time: Int64 = 0) {
         let loginModel = LoginModel.shared
         if let encryptedData = fileModel?.encryptedData, let name = fileModel?.fileName, let userId = loginModel.userID {
-            fileName =  userId + "_" + String(time) + "_"  + name
+            fileName =   String(time) + "_"  + name
             self.spinnerView = self.showSpinner(onView: self.view)
             _ = Amplify.Storage.uploadData(key: fileName, data: encryptedData,
                       progressListener: { progress in
