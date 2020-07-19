@@ -21,7 +21,7 @@ struct UserModel {
         self.password = passWord
     }
 }
-class SingUpView: UIView {
+class SignUpView: UIView {
     enum Action: DelegateAction {
         case ButtonClick(userModel : UserModel)
         
@@ -46,18 +46,26 @@ class SingUpView: UIView {
         let user = UITextField(frame: .zero)
         user.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         user.textAlignment = .left
-        user.placeholder = "User Name"
+        //user.placeholder = "User Name"
+        user.attributedPlaceholder = NSAttributedString(string: "User Name", attributes: [NSAttributedString.Key.foregroundColor : UIColor.hexColor(Colors.b19)])
         user.textColor = .black
         user.minimumFontSize = 17
+        user.layer.cornerRadius = 2
+        user.layer.borderWidth = 1
+        user.layer.borderColor = UIColor.hexColor(Colors.Borders.b1).cgColor
         return user
     }()
     private var emailTextField: UITextField = {
         let user = UITextField(frame: .zero)
         user.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         user.textAlignment = .left
-        user.placeholder = "Email Address"
+        //user.placeholder = "Email Address"
+        user.attributedPlaceholder = NSAttributedString(string: "Email Address", attributes: [NSAttributedString.Key.foregroundColor : UIColor.hexColor(Colors.b19)])
         user.textColor = .black
         user.minimumFontSize = 17
+        user.layer.cornerRadius = 5
+        user.layer.borderWidth = 1
+        user.layer.borderColor = UIColor.hexColor(Colors.Borders.b1).cgColor
         return user
     }()
     
@@ -65,9 +73,13 @@ class SingUpView: UIView {
         let user = UITextField(frame: .zero)
         user.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         user.textAlignment = .left
-        user.placeholder = "Password"
+        //user.placeholder = "Password"
+        user.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor : UIColor.hexColor(Colors.b19)])
         user.textColor = .black
         user.minimumFontSize = 17
+        user.layer.cornerRadius = 5
+        user.layer.borderWidth = 1
+        user.layer.borderColor = UIColor.hexColor(Colors.Borders.b1).cgColor
         return user
     }()
     
@@ -91,8 +103,8 @@ class SingUpView: UIView {
     
     private let loginButton : UIButton = {
         let button = UIButton(frame: .zero)
-        button.setTitle("LOGIN", for: .normal)
-        button.backgroundColor = UIColor.red
+        button.setTitle("SIGN UP", for: .normal)
+        button.backgroundColor = UIColor.hexColor(Colors.Button.secondary)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 19, weight: .bold)
         button.contentHorizontalAlignment = .center
@@ -110,11 +122,11 @@ class SingUpView: UIView {
                 flex.addItem(userNameLabel).marginTop(20).marginHorizontal(10)
                 flex.addItem(userName).height(40).marginTop(10).marginHorizontal(10)
                 
-                flex.addItem(emailLabel).marginTop(20)
+                flex.addItem(emailLabel).marginTop(20).marginHorizontal(10)
                 flex.addItem(emailTextField).height(40).marginTop(10).marginHorizontal(10)
-                flex.addItem(passWordLabel).marginTop(20)
+                flex.addItem(passWordLabel).marginTop(20).marginHorizontal(10)
                 flex.addItem(passwordText).marginTop(10).height(40).marginHorizontal(10)
-                flex.addItem(loginButton).marginTop(40).alignItems(.center).height(40).width(80%)
+                flex.addItem(loginButton).marginTop(40).height(40).marginHorizontal(10)
             }
             
         }

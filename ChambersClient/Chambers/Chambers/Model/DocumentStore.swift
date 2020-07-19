@@ -18,6 +18,7 @@ class DocumentStore : Object {
     @objc dynamic var userId: String? = nil
     @objc dynamic var dateUpdation: Date? = nil
     @objc dynamic var updateTimestamp: Int64 = 0
+    @objc dynamic var storage: String?
     
     override static func primaryKey() -> String? {
         return "id"
@@ -25,7 +26,7 @@ class DocumentStore : Object {
     
     convenience init(id: Int,documentName: String,timestamp: Int64,
                      fileType: String,datecreation: Date, userId: String?,
-                     updatedDate: Date?,updateTime: Int64 = 0) {
+                     updatedDate: Date?,updateTime: Int64 = 0, storage: String?) {
         self.init() //Please note this says 'self' and not 'super'
         self.id = id
         self.documentName = documentName
@@ -35,6 +36,7 @@ class DocumentStore : Object {
         self.userId = userId
         self.dateUpdation = updatedDate
         self.updateTimestamp = updateTime
+        self.storage = storage
     }
     
     func getImageforFileType() -> String? {

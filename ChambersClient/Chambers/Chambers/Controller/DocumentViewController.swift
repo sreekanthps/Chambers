@@ -8,6 +8,8 @@
 
 
 import UIKit
+import Amplify
+import AmplifyPlugins
 
 class DocumentViewController: BaseViewController  {
     var encryptedData: Data? = nil
@@ -31,7 +33,7 @@ class DocumentViewController: BaseViewController  {
     }
     override func viewDidLoad() {
       super.viewDidLoad()
-       biometric.parentVC = self
+      biometric.parentVC = self
       biometric = BioMetircAuthentication(viewControler: self)
       self.setupNavigationBar()
       retrieveDocument()
@@ -50,7 +52,6 @@ class DocumentViewController: BaseViewController  {
         case AuthenticationType.NONE :
             print("No authentication available")
             // No authentication available
-        default: return image
         }
         return image
     }
@@ -104,6 +105,23 @@ class DocumentViewController: BaseViewController  {
                 encryptedData = try File.read(from: fileUrl)
             } catch { }
             
+        }
+    }
+    private func downloadFilefromCloud() {
+        if let uid = store?.userId, let time = store?.timestamp, let fileName = store?.documentName {
+            let key = uid + "_" + String(time) + "_" + fileName
+            print("key to retrieve.....\(key)")
+            _ = Amplify.Storage.downloadData(key: key,
+                progressListener: { progress in
+                    print("Progress: \(progress)")
+                }, resultListener: { (event) in
+                    switch event {
+                    case let .success(data):
+                        print("Completed: \(data)")
+                    case let .failure(storageError):
+                        print("Failed: \(storageError.errorDescription). \(storageError.recoverySuggestion)")
+                }
+            })
         }
     }
 }

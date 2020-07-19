@@ -8,12 +8,14 @@
 
 import UIKit
 import RealmSwift
+import Amplify
 
 @objc protocol TableViewDelegte: class {
    @objc func numberofRows(section: Int) -> Int
    @objc func cellforRowat(cell: Any?, indexPath: IndexPath)
    @objc func numberOfSections() -> Int
    @objc func didSelectRowAt(indexPath: IndexPath)
+  @objc optional func didDeleteRecord(indexPath: IndexPath)
 }
 
 @objc protocol ButtonClickDelegte: class {
@@ -72,6 +74,38 @@ class DashboardViewController: BaseViewController {
         newDocument.modalPresentationStyle = UIModalPresentationStyle.popover
         self.navigationController?.pushViewController(newDocument, animated: false)
     }
+    override func leftbuttonAction() {
+            _ = Amplify.Auth.signOut() { result in
+                switch result {
+                case .success:
+                    DispatchQueue.main.async{
+                        self.navigationController?.popViewController(animated: false)
+                    }
+                case .failure(let error):
+                    print("Sign out failed with error \(error)")
+                }
+            }
+        }
+    private func deleteRealObject(index: Int) {
+        if let record = fileData?[index] {
+            if let userID = LoginModel.shared.userName, let name = record.documentName {
+                let recrodName = userID + name
+                let fileUrl = FileURLComponents(fileName: recrodName, fileExtension: "sk", directoryName: nil, directoryPath: .documentDirectory)
+                    do {
+                        _ = try File.delete(fileUrl)
+                    } catch {
+                       
+                    }
+            }
+            try! realm.write {
+                realm.delete(record)
+            }
+            fileData = try! Realm().objects(DocumentStore.self).sorted(byKeyPath: "timestamp")
+        }
+        
+           
+    }
+    
 }
 
 extension DashboardViewController: TableViewDelegte {
@@ -100,6 +134,9 @@ extension DashboardViewController: TableViewDelegte {
             let rec = data[indexPath.row] 
             celldata.configureData(data: DashboardCellData(fileName: rec.documentName, creationName: rec.datecreation?.toString(dateFormat: DateFormat.ddMMMyyyy), updateName: rec.dateUpdation?.toString(dateFormat: DateFormat.ddMMMyyyy), imageName: rec.getImageforFileType()),isLast: indexPath.row == (data.count - 1) ? true: false )
         }
+    }
+    func didDeleteRecord(indexPath: IndexPath) {
+        self.deleteRealObject(index: indexPath.row)
     }
     
 }

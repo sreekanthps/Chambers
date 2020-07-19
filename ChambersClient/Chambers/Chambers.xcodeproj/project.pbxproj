@@ -21,10 +21,9 @@
 		D127B52324B4896700CBF7B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D127B52224B4896700CBF7B4 /* Assets.xcassets */; };
 		D127B52624B4896700CBF7B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D127B52424B4896700CBF7B4 /* LaunchScreen.storyboard */; };
 		D127B53124B4896700CBF7B4 /* ChambersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D127B53024B4896700CBF7B4 /* ChambersTests.swift */; };
+		D147B7CC24C42AF200FEAAA9 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D147B7CB24C42AF200FEAAA9 /* StringExtension.swift */; };
 		D149905024C0887B00DFBB56 /* AwsWebIdentityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D149904F24C0887B00DFBB56 /* AwsWebIdentityModel.swift */; };
 		D14D8F8824BFFCA100C8A4CF /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14D8F8724BFFCA100C8A4CF /* SplashViewController.swift */; };
-		D175579524B9EDB400B4ACEA /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = D175579324B9EDB400B4ACEA /* amplifyconfiguration.json */; };
-		D175579624B9EDB400B4ACEA /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = D175579424B9EDB400B4ACEA /* awsconfiguration.json */; };
 		D18A19E524BD801000D840D4 /* FileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18A19E424BD801000D840D4 /* FileModel.swift */; };
 		D18CC38F24BEC63B00918382 /* UIDocumentHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18CC38E24BEC63B00918382 /* UIDocumentHelper.swift */; };
 		D18CF0FB24C0199000DDBBBB /* secureock.json in Resources */ = {isa = PBXBuildFile; fileRef = D18CF0FA24C0199000DDBBBB /* secureock.json */; };
@@ -61,10 +60,12 @@
 		D1F6DE9C24C32EEE00CC64D8 /* AWSLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F6DE9B24C32EEE00CC64D8 /* AWSLoginView.swift */; };
 		D1F6DE9E24C3410C00CC64D8 /* safeicon.json in Resources */ = {isa = PBXBuildFile; fileRef = D1F6DE9D24C3410B00CC64D8 /* safeicon.json */; };
 		D1F6DEA024C341DD00CC64D8 /* 17588-safe-icon.json in Resources */ = {isa = PBXBuildFile; fileRef = D1F6DE9F24C341DD00CC64D8 /* 17588-safe-icon.json */; };
-		D1F6DEA324C3508200CC64D8 /* SingupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F6DEA124C3508200CC64D8 /* SingupViewController.swift */; };
+		D1F6DEA324C3508200CC64D8 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F6DEA124C3508200CC64D8 /* SignupViewController.swift */; };
 		D1F6DEA424C3508200CC64D8 /* SignupConfirmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F6DEA224C3508200CC64D8 /* SignupConfirmController.swift */; };
 		D1F6DEA724C3509900CC64D8 /* SignUpConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F6DEA524C3509900CC64D8 /* SignUpConfirmView.swift */; };
-		D1F6DEA824C3509900CC64D8 /* SingUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F6DEA624C3509900CC64D8 /* SingUpView.swift */; };
+		D1F6DEA824C3509900CC64D8 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F6DEA624C3509900CC64D8 /* SignUpView.swift */; };
+		D1F6DEAC24C35FF600CC64D8 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = D1F6DEAA24C35FF600CC64D8 /* awsconfiguration.json */; };
+		D1F6DEAD24C35FF600CC64D8 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = D1F6DEAB24C35FF600CC64D8 /* amplifyconfiguration.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,10 +117,9 @@
 		D127B52C24B4896700CBF7B4 /* ChambersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChambersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D127B53024B4896700CBF7B4 /* ChambersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChambersTests.swift; sourceTree = "<group>"; };
 		D127B53224B4896700CBF7B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D147B7CB24C42AF200FEAAA9 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		D149904F24C0887B00DFBB56 /* AwsWebIdentityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwsWebIdentityModel.swift; sourceTree = "<group>"; };
 		D14D8F8724BFFCA100C8A4CF /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
-		D175579324B9EDB400B4ACEA /* amplifyconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
-		D175579424B9EDB400B4ACEA /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
 		D18A19E424BD801000D840D4 /* FileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileModel.swift; sourceTree = "<group>"; };
 		D18CC38E24BEC63B00918382 /* UIDocumentHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDocumentHelper.swift; sourceTree = "<group>"; };
 		D18CF0FA24C0199000DDBBBB /* secureock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = secureock.json; sourceTree = "<group>"; };
@@ -155,10 +155,12 @@
 		D1F6DE9B24C32EEE00CC64D8 /* AWSLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSLoginView.swift; sourceTree = "<group>"; };
 		D1F6DE9D24C3410B00CC64D8 /* safeicon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = safeicon.json; sourceTree = "<group>"; };
 		D1F6DE9F24C341DD00CC64D8 /* 17588-safe-icon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "17588-safe-icon.json"; sourceTree = "<group>"; };
-		D1F6DEA124C3508200CC64D8 /* SingupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingupViewController.swift; sourceTree = "<group>"; };
+		D1F6DEA124C3508200CC64D8 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		D1F6DEA224C3508200CC64D8 /* SignupConfirmController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupConfirmController.swift; sourceTree = "<group>"; };
 		D1F6DEA524C3509900CC64D8 /* SignUpConfirmView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpConfirmView.swift; sourceTree = "<group>"; };
-		D1F6DEA624C3509900CC64D8 /* SingUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingUpView.swift; sourceTree = "<group>"; };
+		D1F6DEA624C3509900CC64D8 /* SignUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		D1F6DEAA24C35FF600CC64D8 /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
+		D1F6DEAB24C35FF600CC64D8 /* amplifyconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,11 +234,11 @@
 		D127B51824B4896300CBF7B4 /* Chambers */ = {
 			isa = PBXGroup;
 			children = (
+				D1F6DEA924C35FD000CC64D8 /* Configuration */,
 				D18CF0F924C0197400DDBBBB /* Animation */,
 				D1BE9C3924BC4BE000BA568C /* CellTemplate */,
 				D1BE9C2A24BC337600BA568C /* Realm */,
 				D115641924BAC1910061F964 /* Model */,
-				D175579224B9ED9400B4ACEA /* Cloud */,
 				D1AD9DA224B8967D00DD292B /* Bridge */,
 				D1C448C024B7476000EDA165 /* Utilities */,
 				D1AC7A0E24B6E6BF003978BA /* Components */,
@@ -263,15 +265,6 @@
 			path = ChambersTests;
 			sourceTree = "<group>";
 		};
-		D175579224B9ED9400B4ACEA /* Cloud */ = {
-			isa = PBXGroup;
-			children = (
-				D175579324B9EDB400B4ACEA /* amplifyconfiguration.json */,
-				D175579424B9EDB400B4ACEA /* awsconfiguration.json */,
-			);
-			path = Cloud;
-			sourceTree = "<group>";
-		};
 		D18CF0F924C0197400DDBBBB /* Animation */ = {
 			isa = PBXGroup;
 			children = (
@@ -286,7 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				D1F6DEA224C3508200CC64D8 /* SignupConfirmController.swift */,
-				D1F6DEA124C3508200CC64D8 /* SingupViewController.swift */,
+				D1F6DEA124C3508200CC64D8 /* SignupViewController.swift */,
 				D1A1FDC724B49157007337B7 /* LoginViewController.swift */,
 				D1AC7A0F24B6E74A003978BA /* NewDocumentController.swift */,
 				D1AC7A0A24B6E68B003978BA /* DashBoardViewController.swift */,
@@ -302,7 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				D1F6DEA524C3509900CC64D8 /* SignUpConfirmView.swift */,
-				D1F6DEA624C3509900CC64D8 /* SingUpView.swift */,
+				D1F6DEA624C3509900CC64D8 /* SignUpView.swift */,
 				D1A1FDCA24B491A8007337B7 /* LoginView.swift */,
 				D1AC7A0C24B6E6AE003978BA /* DashBoardView.swift */,
 				D1C448BE24B7417800EDA165 /* NewDocumentView.swift */,
@@ -360,8 +353,18 @@
 				D1A1EE5024BC88D0006CCC17 /* BioMetircAuthentication.swift */,
 				D18CC38E24BEC63B00918382 /* UIDocumentHelper.swift */,
 				D11644EF24BF3036007460A3 /* DateExtension.swift */,
+				D147B7CB24C42AF200FEAAA9 /* StringExtension.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		D1F6DEA924C35FD000CC64D8 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				D1F6DEAB24C35FF600CC64D8 /* amplifyconfiguration.json */,
+				D1F6DEAA24C35FF600CC64D8 /* awsconfiguration.json */,
+			);
+			path = Configuration;
 			sourceTree = "<group>";
 		};
 		D36AC7E0139B9864A4782D51 /* Frameworks */ = {
@@ -469,13 +472,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1F6DE9E24C3410C00CC64D8 /* safeicon.json in Resources */,
-				D175579624B9EDB400B4ACEA /* awsconfiguration.json in Resources */,
 				D196613924B4CFF9004A336C /* Main.storyboard in Resources */,
 				D1F6DEA024C341DD00CC64D8 /* 17588-safe-icon.json in Resources */,
 				D127B52624B4896700CBF7B4 /* LaunchScreen.storyboard in Resources */,
+				D1F6DEAC24C35FF600CC64D8 /* awsconfiguration.json in Resources */,
 				D127B52324B4896700CBF7B4 /* Assets.xcassets in Resources */,
+				D1F6DEAD24C35FF600CC64D8 /* amplifyconfiguration.json in Resources */,
 				D18CF0FB24C0199000DDBBBB /* secureock.json in Resources */,
-				D175579524B9EDB400B4ACEA /* amplifyconfiguration.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -594,11 +597,11 @@
 				D1AC7A0D24B6E6AE003978BA /* DashBoardView.swift in Sources */,
 				D1BE9C4124BC752600BA568C /* DocumentView.swift in Sources */,
 				D1F6DE9A24C32ED400CC64D8 /* AWSLoginController.swift in Sources */,
-				D1F6DEA824C3509900CC64D8 /* SingUpView.swift in Sources */,
+				D1F6DEA824C3509900CC64D8 /* SignUpView.swift in Sources */,
 				D149905024C0887B00DFBB56 /* AwsWebIdentityModel.swift in Sources */,
 				D115641D24BAD5C60061F964 /* ImageHelper.swift in Sources */,
 				D1C448CC24B768D200EDA165 /* ActionDelegate.swift in Sources */,
-				D1F6DEA324C3508200CC64D8 /* SingupViewController.swift in Sources */,
+				D1F6DEA324C3508200CC64D8 /* SignupViewController.swift in Sources */,
 				D1A1EE5124BC88D0006CCC17 /* BioMetircAuthentication.swift in Sources */,
 				D1F6DEA424C3508200CC64D8 /* SignupConfirmController.swift in Sources */,
 				D115641624BABABB0061F964 /* UINavigationHelper.swift in Sources */,
@@ -611,6 +614,7 @@
 				D1BE9C3F24BC721000BA568C /* DocumentViewController.swift in Sources */,
 				D115641F24BB20B80061F964 /* FileManagerHelper.swift in Sources */,
 				D1C448C624B74A5700EDA165 /* UIFontExtension.swift in Sources */,
+				D147B7CC24C42AF200FEAAA9 /* StringExtension.swift in Sources */,
 				D1A1FDCB24B491A8007337B7 /* LoginView.swift in Sources */,
 				D1AD9D9D24B87D4700DD292B /* CryptoHelper.swift in Sources */,
 				D14D8F8824BFFCA100C8A4CF /* SplashViewController.swift in Sources */,

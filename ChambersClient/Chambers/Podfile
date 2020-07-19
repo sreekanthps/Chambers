@@ -18,6 +18,7 @@ target 'Chambers' do
   pod 'AmplifyPlugins/AWSAPIPlugin'
   pod 'AmplifyPlugins/AWSDataStorePlugin'
   pod 'AmplifyPlugins/AWSCognitoAuthPlugin'
+  pod 'AmplifyPlugins/AWSS3StoragePlugin'
   pod 'AWSMobileClient'
   pod 'AWSPinpoint'
   pod 'Toast-Swift', '~> 5.0.1'

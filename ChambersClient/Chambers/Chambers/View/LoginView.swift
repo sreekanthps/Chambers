@@ -41,6 +41,7 @@ class LoginView: UIView {
         let user = UITextField(frame: .zero)
         user.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         user.textAlignment = .left
+        user.textColor = .black
         //user.placeholder = "User ID"
         user.attributedPlaceholder = NSAttributedString(string: "User ID", attributes: [NSAttributedString.Key.foregroundColor : UIColor.hexColor(Colors.b19)])
         user.textColor = UIColor.hexColor(Colors.b19)//bc5
@@ -68,6 +69,7 @@ class LoginView: UIView {
         user.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         user.textAlignment = .left
         user.isSecureTextEntry = true
+        user.textColor = .black
         user.placeholder = "PIN"
         user.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor : UIColor.hexColor(Colors.b19)])
         user.textColor = UIColor.hexColor(Colors.b19)//bc5

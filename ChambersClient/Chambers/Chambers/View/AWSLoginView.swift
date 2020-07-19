@@ -18,6 +18,7 @@ class AWSLoginView: UIView {
     enum Action: DelegateAction {
         case ButtonClick(loginType: LoginType)
         case NormalLogin(userID: String?, password: String?)
+        case Registration
     }
     var loginType: LoginType = .NONE
     weak var delegate: ActionDelegate?
@@ -40,6 +41,7 @@ class AWSLoginView: UIView {
         user.textAlignment = .left
         //user.placeholder = "User ID"
         user.attributedPlaceholder = NSAttributedString(string: "User ID", attributes: [NSAttributedString.Key.foregroundColor : UIColor.hexColor(Colors.b19)])
+         user.textColor = .black
         user.textColor = UIColor.hexColor(Colors.b19)//bc5
         user.minimumFontSize = 17
         return user
@@ -65,6 +67,7 @@ class AWSLoginView: UIView {
         user.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         user.textAlignment = .left
         user.isSecureTextEntry = true
+        user.textColor = .black
         user.placeholder = "PIN"
         user.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor : UIColor.hexColor(Colors.b19)])
         user.textColor = UIColor.hexColor(Colors.b19)//bc5
@@ -75,22 +78,34 @@ class AWSLoginView: UIView {
     
     private let fbloginButton : UIButton = {
         let button = UIButton(frame: .zero)
-        button.setTitle("FaceBook Login", for: .normal)
-        button.backgroundColor = UIColor.hexColor(Colors.Button.secondary)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont.getDefaultFontBoldStyle(18)
+        //button.setTitle("FaceBook Login", for: .normal)
+        button.setBackgroundImage(UIImage(named: "facebook"), for: .normal)
+        //button.backgroundColor = UIColor.hexColor(Colors.Button.secondary)
+        //button.setTitleColor(.white, for: .normal)
+        //button.titleLabel?.font = UIFont.getDefaultFontBoldStyle(18)
         button.contentHorizontalAlignment = .center
         button.addTarget(self, action: #selector(fbbuttonPressed(_:)), for: .touchUpInside)
         return button
     }()
     private let googleloginButton : UIButton = {
         let button = UIButton(frame: .zero)
-        button.setTitle("FaceBook Login", for: .normal)
-        button.backgroundColor = UIColor.hexColor(Colors.Button.secondary)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont.getDefaultFontBoldStyle(18)
+        //button.setTitle("Google Login", for: .normal)
+        button.setBackgroundImage(UIImage(named: "google1"), for: .normal)
+        //button.backgroundColor = UIColor.hexColor(Colors.Button.secondary)
+        //button.setTitleColor(.white, for: .normal)
+        //button.titleLabel?.font = UIFont.getDefaultFontBoldStyle(18)
         button.contentHorizontalAlignment = .center
         button.addTarget(self, action: #selector(googlebuttonPressed(_:)), for: .touchUpInside)
+        return button
+    }()
+    private let register: UIButton = {
+        let button = UIButton(frame: .zero)
+        button.setTitle("New User ? Register Here", for: .normal)
+        button.backgroundColor = .white
+        button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 13, weight: .bold)
+        button.contentHorizontalAlignment = .left
+        button.addTarget(self, action: #selector(registration(_:)), for: .touchUpInside)
         return button
     }()
     
@@ -113,8 +128,10 @@ class AWSLoginView: UIView {
                 flex.addItem(lineVIew).marginLeft(16).height(1).marginRight(0)
                 flex.addItem(passWord).marginHorizontal(16).height(44)
             }
-            flex.addItem(loginButton).height(40).marginHorizontal(30).marginTop(40)
-            flex.addItem(fbloginButton).height(40).marginHorizontal(30).marginTop(40)
+            flex.addItem(register).marginLeft(46).height(30).width(172).marginTop(12)
+            flex.addItem(loginButton).height(40).marginHorizontal(46).marginTop(40)
+            flex.addItem(fbloginButton).height(40).marginHorizontal(46).marginTop(40)
+            flex.addItem(googleloginButton).height(40).marginHorizontal(46).marginTop(20)
         }
         addSubview(root)
     }
@@ -130,12 +147,17 @@ class AWSLoginView: UIView {
     }
     @objc func buttonPressed(_ sender: UIButton) {
         self.delegate?.actionSender(didReceiveAction: Action.NormalLogin(userID: userIdText.text, password: passWord.text))
+    }
     @objc func fbbuttonPressed(_ sender: UIButton) {
         print("facebook button pressed")
         self.delegate?.actionSender(didReceiveAction: Action.ButtonClick(loginType: .FACEBOOK))
     }
     @objc func googlebuttonPressed(_ sender: UIButton) {
         self.delegate?.actionSender(didReceiveAction: Action.ButtonClick(loginType: .GOOGLE))
+       
+    }
+    @objc func registration(_ sender: UIButton) {
+        self.delegate?.actionSender(didReceiveAction: Action.Registration)
        
     }
     

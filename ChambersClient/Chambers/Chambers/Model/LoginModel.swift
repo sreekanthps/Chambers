@@ -54,4 +54,12 @@ class LoginModel {
         LoginModel.shared.userID = userID
     }
     
+    required public init?(userID: String?, email: String?) {
+        self.userID = userID
+        self.email = email
+        LoginModel.shared.userID = userID
+        LoginModel.shared.email = email
+    }
+    
+    
 }

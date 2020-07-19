@@ -9,7 +9,7 @@
 import UIKit
 
 class BaseViewController : UIViewController {
-    
+    var spinnerView: UIView? = nil
     override func viewDidLoad() {
       super.viewDidLoad()
     }
@@ -67,4 +67,7 @@ class BaseViewController : UIViewController {
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: text, style: .plain, target: self, action: #selector(self.rightbuttonAction))
         }
     }
+    
+    
+   
 }

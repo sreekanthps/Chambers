@@ -33,6 +33,7 @@ class SignUpConfirmView: UIView {
     private var userNameLabel : UILabel = {
                let label = UILabel()
                label.text = "Confirmation Code"
+               label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
                return label
        }()
     
@@ -40,16 +41,21 @@ class SignUpConfirmView: UIView {
         let user = UITextField(frame: .zero)
         user.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         user.textAlignment = .left
-        user.placeholder = "Cofirmation Code"
+        //user.placeholder = "Cofirmation Code"
+        user.attributedPlaceholder = NSAttributedString(string: "Cofirmation Code", attributes: [NSAttributedString.Key.foregroundColor : UIColor.hexColor(Colors.b19)])
         user.textColor = .black
         user.minimumFontSize = 17
+        user.layer.cornerRadius = 5
+        user.layer.borderWidth = 1
+        user.layer.borderColor = UIColor.hexColor(Colors.Borders.b1).cgColor
         return user
+       
     }()
   
     
     private let loginButton : UIButton = {
         let button = UIButton(frame: .zero)
-        button.setTitle("LOGIN", for: .normal)
+        button.setTitle("CONFIRM", for: .normal)
         button.backgroundColor = UIColor.red
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 19, weight: .bold)
@@ -63,10 +69,10 @@ class SignUpConfirmView: UIView {
     }
     func loadView() {
         root.flex.define { (flex) in
-            flex.addItem().marginHorizontal(20).marginVertical(20).define { (flex) in
-                flex.addItem(userNameLabel).marginTop(20).marginHorizontal(10)
-                flex.addItem(userName).height(40).marginTop(10).marginHorizontal(10)
-                flex.addItem(loginButton).marginTop(40).alignItems(.center).height(40).width(80%)
+            flex.addItem().marginHorizontal(30).marginVertical(20).define { (flex) in
+                flex.addItem(userNameLabel).marginTop(20)
+                flex.addItem(userName).height(40).marginTop(10)
+                flex.addItem(loginButton).marginTop(40).height(40)
             }
             
         }

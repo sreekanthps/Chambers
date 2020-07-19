@@ -15,6 +15,7 @@ struct FileModel {
     var fileImage: UIImage?
     var encryptedData: Data?
     var contentType: ContentType? = .OTHER
+    var fileUploadNmae: String? = nil
     
     func getImageAssetType() -> String? {
         switch contentType {

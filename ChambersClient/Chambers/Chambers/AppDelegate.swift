@@ -25,17 +25,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ApplicationDelegate.shared.application( application, didFinishLaunchingWithOptions: launchOptions)
         GIDSignIn.sharedInstance().clientID = "828971646330-eno5kior4au558sdh0ssecev4rja905e.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().delegate = self
-        //addRealmObjects()
         setupRootViewController(launchOptions: launchOptions)
-//        do {
-//            
-//            Amplify.Logging.logLevel = .verbose
-//            //try Amplify.add(plugin: AWSCognitoAuthPlugin())
-//            try Amplify.configure()
-//            
-//        } catch {
-//            print("An error occurred setting up Amplify: \(error)")
-//        }
+        do {
+            Amplify.Logging.logLevel = .verbose
+            try Amplify.add(plugin: AWSS3StoragePlugin())
+            try Amplify.add(plugin: AWSCognitoAuthPlugin())
+            try Amplify.configure()
+            
+        } catch {
+            print("An error occurred setting up Amplify: \(error)")
+        }
         return true
     }
     

@@ -12,9 +12,10 @@ public struct Colors {
 
     public struct Button {
         public static let primary = "#F9F3D1"
-       // public static let secondary = "#DC9202"
+        //public static let secondary = "#DC9202"
         public static let secondary = "#F54D28"
         public static let delete = "#FF3333"
+        public static let login = "#F54D28"
     }
     public struct Label {
         public static let primary = ""
@@ -48,4 +49,7 @@ public struct Colors {
     public static let b18 = "#132634"
     public static let b19 = "#F54D28"
     
+    public struct  Borders {
+        public static let b1 = "#999999"
+    }
 }

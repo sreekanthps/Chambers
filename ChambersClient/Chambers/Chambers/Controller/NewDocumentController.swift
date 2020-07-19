@@ -13,7 +13,9 @@ import CommonCrypto
 import PhotosUI
 import RealmSwift
 import MobileCoreServices
-
+import Amplify
+import AmplifyPlugins
+import Toast_Swift
 enum ContentType: String {
     case PNGIMAGE = "png"
     case JPEGIMAGE = "jpeg"
@@ -24,8 +26,14 @@ enum ContentType: String {
     
 }
 
+enum Storage: String {
+    case LOCAL = "local"
+    case CLOUD = "cloud"
+}
 
 class NewDocumentController: BaseViewController {
+    var storage: Storage = .LOCAL
+    var time: Int64 = 0
     var status: FileStatus = .PLAIN
     let realm = try! Realm()
     var fileName : String = ""
@@ -94,6 +102,9 @@ class NewDocumentController: BaseViewController {
                                   self.saveDocumentInLocal()
                               } else if selectedAction == "Save To Cloud" {
                                   // Need to implement cloud upload
+                                  self.time = Date().unixTimestamp
+                                  self.writeFileDetailstoDB(time: self.time,storage: .CLOUD)
+                                  self.uploadDatatoCloud()
                               }
                           }
            }
@@ -102,33 +113,66 @@ class NewDocumentController: BaseViewController {
         }
     }
     
+    
     private func saveDocumentInLocal() {
+        time = Date().unixTimestamp
         let loginModel = LoginModel.shared
         if let encryptedData = fileModel?.encryptedData, let name = fileModel?.fileName, let userId = loginModel.userID {
-            fileName =  userId + name
+            fileName =  userId + "_" + String(time) + "_" + name
             let fileUrl = FileURLComponents(fileName: fileName, fileExtension: "sk", directoryName: nil, directoryPath: .documentDirectory)
                 do {
-                    _ = try File.write(encryptedData, to: fileUrl)
-                    writeFileDetailstoDB()
+                      _ = try File.write(encryptedData, to: fileUrl)
+                    self.displayToastMessage(message: "File Saved locally on device")
+                    writeFileDetailstoDB(time: self.time,storage: .LOCAL)
                 } catch {
                    
                 }
             }
         }
     
-    private func writeFileDetailstoDB() {
+    private func writeFileDetailstoDB(time: Int64 = 0, storage: Storage ) {
         let documents = realm.objects(DocumentStore.self)
         let login = LoginModel.shared
         let id = documents.count > 0 ? documents.count + 1 : 1
-        let realm = try! Realm()
+        
         try! realm.write {
-            let document = DocumentStore(id: id, documentName: fileModel?.fileName ?? "", timestamp: Date().unixTimestamp, fileType: fileModel?.fileExtension ?? "JPEG", datecreation: Date(),userId: login.userID,updatedDate: Date(),updateTime: Date().unixTimestamp)
+            let document = DocumentStore(id: id, documentName: fileModel?.fileName ?? "", timestamp: Date().unixTimestamp, fileType: fileModel?.fileExtension ?? "JPEG", datecreation: Date(),userId: login.userID,updatedDate: Date(),updateTime: Date().unixTimestamp,storage: self.storage.rawValue)
             realm.add(document)
             try! realm.commitWrite()
         }
         
     }
-
+    
+    func uploadDatatoCloud(time: Int64 = 0) {
+        let loginModel = LoginModel.shared
+        if let encryptedData = fileModel?.encryptedData, let name = fileModel?.fileName, let userId = loginModel.userID {
+            fileName =  userId + "_" + String(time) + "_"  + name
+            self.spinnerView = self.showSpinner(onView: self.view)
+            _ = Amplify.Storage.uploadData(key: fileName, data: encryptedData,
+                      progressListener: { progress in
+                          print("Progress: \(progress)")
+                      }, resultListener: { (event) in
+                          switch event {
+                          case .success(let data):
+                              print("Completed: \(data)")
+                              self.removeSpinner(childView: self.spinnerView!)
+                              self.displayToastMessage(message: "File Uploaded to Cloud", time: 1.0)
+                              //self.writeFileDetailstoDB()
+                          case .failure(let storageError):
+                              print("Failed: \(storageError.errorDescription). \(storageError.recoverySuggestion)")
+                      }
+                  })
+        }
+       
+    }
+    
+    private func displayToastMessage(message: String, time: TimeInterval = 1.0) {
+        DispatchQueue.main.async {
+            self.navigationController?.view.makeToast(message, duration: time, position: .center,  completion: { (didTap) in
+                
+            })
+        }
+    }
        
     func authorisationStatus(type: UIImagePickerController.SourceType) {
         if type == .camera {
@@ -218,6 +262,7 @@ extension NewDocumentController: UIImagePickerControllerDelegate, UINavigationCo
             self.mainView.updateEncryptedView()
         }
         
+        
     }
     func decryptData() {
         if let encryptedData = fileModel?.encryptedData, let plaindata = crypto.decryptString(data: encryptedData) {
@@ -286,7 +331,7 @@ extension NewDocumentController : UIDocumentPickerDelegate {
                     image = UIImage(data: data)
                 }
                 self.fileModel = FileModel(fileName: pickedURL.lastPathComponent, fileExtension: pickedURL.pathExtension, fileData: data, fileImage: image, contentType: ContentType.init(rawValue: pickedURL.pathExtension))
-                  self.updateRightBarbuttonItem()
+                   self.updateRightBarbuttonItem()
                    self.mainView.updateDecryptButton(fileModel: self.fileModel)
                 } catch let error { print("error: ", error.localizedDescription) }
 

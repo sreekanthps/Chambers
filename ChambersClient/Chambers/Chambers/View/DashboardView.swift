@@ -29,7 +29,7 @@ class DashboardView: UIView {
     weak var buttonDelegate: ButtonClickDelegte?
     let plusButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "plus"), for: .normal)
+        button.setImage(UIImage(named: "add"), for: .normal)
         button.addTarget(self, action: #selector(addDocumentButton(_:)), for: .touchUpInside)
         return button
     }()
@@ -64,7 +64,7 @@ class DashboardView: UIView {
         rootView.flex.define { (flex) in
             flex.addItem(tableView).height(90%).marginHorizontal(15).marginTop(30)
             flex.addItem(plusView).justifyContent(.center).width(100%).height(100%).define { (flex) in
-                flex.addItem(add).size(200).alignSelf(.center)
+                flex.addItem(plusButton).size(200).alignSelf(.center)
             }
         }
         addSubview(rootView)
@@ -98,6 +98,17 @@ extension DashboardView: UITableViewDataSource,UITableViewDelegate  {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.didSelectRowAt(indexPath: indexPath)
+    }
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            // delete item at indexPath
+            self.delegate?.didDeleteRecord?(indexPath: indexPath)
+            self.tableView.deleteRows(at: [indexPath], with: .none)
+        }
+
+        return [delete]
+
     }
     
     

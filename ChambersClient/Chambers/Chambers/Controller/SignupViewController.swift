@@ -8,11 +8,12 @@
 
 import UIKit
 import Amplify
+import Toast_Swift
 
-class  SingupViewController: UIViewController {
+class  SignupViewController: BaseViewController {
     var userModal : UserModel?
-    private var mainView: SingUpView {
-        return self.view as! SingUpView
+    private var mainView: SignUpView {
+        return self.view as! SignUpView
     }
     
     init() {
@@ -25,14 +26,19 @@ class  SingupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
     override func loadView() {
-        let view = SingUpView()
+        let view = SignUpView()
         view.delegate = self
         self.view = view
         
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        showNavigationBar(titleColor: UIColor.hexColor(Colors.navBar1), barBackGroundColor:UIColor.hexColor(Colors.navBar1))
+        configureRightButtonItem(image: "nil")
+        configureBackBarButtonItem(image: "backswe")
     }
     
     func signUp(username: String, password: String, email: String) {
@@ -45,10 +51,10 @@ class  SingupViewController: UIViewController {
             case .success(let signUpResult):
                 if case let .confirmUser(deliveryDetails, _) = signUpResult.nextStep {
                     print("Delivery details ****** \(String(describing: deliveryDetails))")
-                    self.movetoConfirmation()
+                    self.singupConfiormationMessage()
                 } else {
                     print("SignUp Complete")
-                    self.movetoConfirmation()
+                    self.singupConfiormationMessage()
                     
                 }
             case .failure(let error):
@@ -56,22 +62,34 @@ class  SingupViewController: UIViewController {
             }
         }
     }
-    
-    private func movetoConfirmation() {
+    private func singupConfiormationMessage() {
         DispatchQueue.main.async {
-            let confirm = SignupConfirmController(model: self.userModal)
-                   self.navigationController?.pushViewController(confirm, animated: false)
+            self.navigationController?.view.makeToast("Sing Up is almsost done, Please used the OTP you have received in your email in next screen", duration: 2.0, position: .center,  completion: { (didTap) in
+                print("Testing the toast message")
+                self.movetoConfirmation()
+            })
         }
     }
     
+    private func movetoConfirmation() {
+        //DispatchQueue.main.async {
+            let confirm = SignupConfirmController(model: self.userModal)
+            self.navigationController?.pushViewController(confirm, animated: false)
+        //}
+    }
+    
+    override func leftbuttonAction() {
+        self.navigationController?.popViewController(animated: false)
+    }
 }
 
-extension SingupViewController: ActionDelegate {
+extension SignupViewController: ActionDelegate {
     func actionSender(didReceiveAction action: DelegateAction) {
         switch action {
-        case SingUpView.Action.ButtonClick(let model) :
+        case SignUpView.Action.ButtonClick(let model) :
             self.userModal = model
             self.signUp(username: model.userName ?? "", password: model.password ?? "", email: model.email ?? "")
+            //self.singupConfiormationMessage()
         default: break
         }
       }
