@@ -12,7 +12,6 @@ public struct Colors {
 
     public struct Button {
         public static let primary = "#F9F3D1"
-        //public static let secondary = "#DC9202"
         public static let secondary = "#F54D28"
         public static let delete = "#FF3333"
         public static let login = "#F54D28"

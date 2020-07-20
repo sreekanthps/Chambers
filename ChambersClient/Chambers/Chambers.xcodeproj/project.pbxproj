@@ -22,7 +22,6 @@
 		D127B52624B4896700CBF7B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D127B52424B4896700CBF7B4 /* LaunchScreen.storyboard */; };
 		D127B53124B4896700CBF7B4 /* ChambersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D127B53024B4896700CBF7B4 /* ChambersTests.swift */; };
 		D147B7CC24C42AF200FEAAA9 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D147B7CB24C42AF200FEAAA9 /* StringExtension.swift */; };
-		D149905024C0887B00DFBB56 /* AwsWebIdentityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D149904F24C0887B00DFBB56 /* AwsWebIdentityModel.swift */; };
 		D14D8F8824BFFCA100C8A4CF /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14D8F8724BFFCA100C8A4CF /* SplashViewController.swift */; };
 		D18A19E524BD801000D840D4 /* FileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18A19E424BD801000D840D4 /* FileModel.swift */; };
 		D18CC38F24BEC63B00918382 /* UIDocumentHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18CC38E24BEC63B00918382 /* UIDocumentHelper.swift */; };
@@ -118,7 +117,6 @@
 		D127B53024B4896700CBF7B4 /* ChambersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChambersTests.swift; sourceTree = "<group>"; };
 		D127B53224B4896700CBF7B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D147B7CB24C42AF200FEAAA9 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
-		D149904F24C0887B00DFBB56 /* AwsWebIdentityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwsWebIdentityModel.swift; sourceTree = "<group>"; };
 		D14D8F8724BFFCA100C8A4CF /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		D18A19E424BD801000D840D4 /* FileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileModel.swift; sourceTree = "<group>"; };
 		D18CC38E24BEC63B00918382 /* UIDocumentHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDocumentHelper.swift; sourceTree = "<group>"; };
@@ -206,7 +204,6 @@
 				D115641A24BAC1A80061F964 /* NavigationModel.swift */,
 				D115642024BB25640061F964 /* LoginModel.swift */,
 				D18A19E424BD801000D840D4 /* FileModel.swift */,
-				D149904F24C0887B00DFBB56 /* AwsWebIdentityModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -598,7 +595,6 @@
 				D1BE9C4124BC752600BA568C /* DocumentView.swift in Sources */,
 				D1F6DE9A24C32ED400CC64D8 /* AWSLoginController.swift in Sources */,
 				D1F6DEA824C3509900CC64D8 /* SignUpView.swift in Sources */,
-				D149905024C0887B00DFBB56 /* AwsWebIdentityModel.swift in Sources */,
 				D115641D24BAD5C60061F964 /* ImageHelper.swift in Sources */,
 				D1C448CC24B768D200EDA165 /* ActionDelegate.swift in Sources */,
 				D1F6DEA324C3508200CC64D8 /* SignupViewController.swift in Sources */,
