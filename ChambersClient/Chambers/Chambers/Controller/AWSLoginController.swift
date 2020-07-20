@@ -35,11 +35,13 @@ class AWSLoginController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.backBarButtonItem = nil
+        
        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        //self.singoutUser()
     }
     
     func navigateToDashBoard() {
@@ -55,10 +57,16 @@ class AWSLoginController: BaseViewController {
         self.view = view
     }
     private func validateCredentials(userID: String?, password: String?)  {
+        guard let user = userID, let pass = password ,user.count > 0 ,pass.count > 0 else  {
+            self.notifyAlert("Login Error", err: "Please Enter User ID/Password")
+            return
+        }
        self.signIn(username: userID ?? "", password: password ?? "")
     }
     private func signIn(username: String, password: String) {
-        self.spinnerView = self.showSpinner(onView: self.view)
+        DispatchQueue.main.async{
+            self.spinnerView = self.showSpinner(onView: self.view)
+        }
         _ = Amplify.Auth.signIn(username: username, password: password) { result in
             switch result {
             case .success(_):
@@ -68,6 +76,8 @@ class AWSLoginController: BaseViewController {
                 self.navigateToDashBoard()
             case .failure(let error):
                 print("Sign in failed \(error)")
+                self.removeSpinner(childView: self.spinnerView!)
+                
                 self.singoutUser()
             }
         }
@@ -78,7 +88,7 @@ class AWSLoginController: BaseViewController {
                case .success(_):
                    print("Sign in succeeded")
                    self.fetchAttributes()
-                   
+                   self.navigateToDashBoard()
                case .failure(let error):
                    print("Sign in failed \(error)")
                    self.singoutUser()
@@ -92,8 +102,16 @@ class AWSLoginController: BaseViewController {
                case .success:
                    print("Successfully signed out")
                    let authprovider = self.social == .FACEBOOK ? AuthProvider.facebook : AuthProvider.google
-                   self.signIn(username: self.login?.userName ?? "", password: self.login?.passWord ?? "")
-               case .failure(let error):
+                   if self.social == .LOGIN {
+                        self.signIn(username: self.login?.userName ?? "", password: self.login?.passWord ?? "")
+                   } else {
+                        if self.social == .FACEBOOK {
+                            self.FacebookAuth(authType: .facebook)
+                        } else if self.social == .GOOGLE {
+                            self.FacebookAuth(authType: .google)
+                        }
+                   }
+                case .failure(let error):
                    print("Sign out failed with error \(error)")
                }
            }
@@ -116,11 +134,13 @@ class AWSLoginController: BaseViewController {
             if social == .LOGIN {
                 let email = att[2].value
                 loginModel = LoginModel(userID: currentUser?.userId, email: email)
-            } else if social == .FACEBOOK {
-                let attributes = att[0].value.toDictionary()
-                 
-            } else if social == .GOOGLE {
-                let attributes = att[3].value.toDictionary()
+            } else  {
+                if let json = att.filter { $0.key.rawValue == "identities"}.first,
+                 let object = json.value.jsonObject() {
+                    print("object.....\(object)")
+                    loginModel = LoginModel(userID: currentUser?.userId, email: object["userId"] as? String)
+                }
+               
             }
             
         }

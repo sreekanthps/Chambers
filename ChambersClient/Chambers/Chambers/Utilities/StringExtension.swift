@@ -19,4 +19,20 @@ extension String{
         }
         return blankDict
     }
+    
+    func jsonObject() -> [String:AnyObject]? {
+        do{
+            if let json = self.data(using: String.Encoding.utf8),
+            let jsonData = try JSONSerialization.jsonObject(with: json, options: .allowFragments) as? [Dictionary<String,AnyObject>] {
+                
+                print("jsonData.....\(jsonData)")
+                return jsonData[0]
+            }
+        }catch {
+            print(error.localizedDescription)
+
+        }
+        return nil
+    }
+    
 }
