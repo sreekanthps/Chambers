@@ -64,20 +64,21 @@ class AWSLoginController: BaseViewController {
        self.signIn(username: userID ?? "", password: password ?? "")
     }
     private func signIn(username: String, password: String) {
-        DispatchQueue.main.async{
+        if  spinnerView == nil {
             self.spinnerView = self.showSpinner(onView: self.view)
         }
         _ = Amplify.Auth.signIn(username: username, password: password) { result in
+            self.removeSpinner(childView: self.spinnerView!)
+             self.spinnerView = nil
             switch result {
             case .success(_):
                 print("User signin success.......")
                 self.fetchAttributes()
-                self.removeSpinner(childView: self.spinnerView!)
                 self.navigateToDashBoard()
             case .failure(let error):
                 print("Sign in failed \(error)")
                 self.removeSpinner(childView: self.spinnerView!)
-                
+               
                 self.singoutUser()
             }
         }

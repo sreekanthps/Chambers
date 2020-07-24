@@ -68,7 +68,6 @@ class LoginViewController: UIViewController {
             let token = auth.accessToken,  token.count > 0 else{
                 return
         }
-        print("Gogole token...\(token)")
         navigateToDashBoard()
         
     }
